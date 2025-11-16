@@ -14,7 +14,7 @@
         }
 
         .container {
-            padding-top: 120px;
+            padding-top: 130px;
         }
 
         h1 {
@@ -40,36 +40,35 @@
             to   { text-shadow: 0 0 25px cyan; }
         }
 
-        /* Elang 1 */
-        .eagle1 {
+        /* ==== EAGLE FIX ==== */
+        .eagle1, .eagle2 {
             position: absolute;
-            top: 18%;
-            left: -300px;
-            width: 250px;
-            animation: fly1 7s linear infinite;
+            width: 180px;   /* lebih kecil biar muat HP */
             filter: drop-shadow(0 0 15px cyan);
+        }
+
+        .eagle1 {
+            top: 20%;
+            left: -250px;
+            animation: fly1 8s linear infinite;
+        }
+
+        .eagle2 {
+            top: 65%;
+            left: -250px;
+            animation: fly2 10s linear infinite;
         }
 
         @keyframes fly1 {
-            0%   { left: -300px; transform: scale(1); }
-            50%  { transform: scale(1.2); }
-            100% { left: 120%; transform: scale(1); }
-        }
-
-        /* Elang 2 */
-        .eagle2 {
-            position: absolute;
-            top: 55%;
-            left: -350px;
-            width: 220px;
-            animation: fly2 9s linear infinite;
-            filter: drop-shadow(0 0 15px cyan);
+            0% { left: -250px; }
+            50% { transform: scale(1.1); }
+            100% { left: 120%; }
         }
 
         @keyframes fly2 {
-            0%   { left: -350px; transform: scale(1); }
-            50%  { transform: scale(1.1); }
-            100% { left: 120%; transform: scale(1); }
+            0% { left: -250px; }
+            50% { transform: scale(1.15); }
+            100% { left: 120%; }
         }
 
         /* Tombol Neon */
@@ -102,22 +101,21 @@
 </head>
 <body>
 
-    <!-- Suara tombol -->
+    <!-- CLICK SOUND -->
     <audio id="clickSound">
-        <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_7a83ba45cd.mp3?filename=ui-click-1-153455.mp3" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_7a83ba45cd.mp3?filename=ui-click-1-153455.mp3">
     </audio>
 
-    <!-- Elang Terbang -->
-    <img class="eagle1" src="https://i.ibb.co/4mGBm0k/eagle-flying.gif">
-    <img class="eagle2" src="https://i.ibb.co/4mGBm0k/eagle-flying.gif">
+    <!-- ==== FIXED EAGLE GIFS ==== -->
+    <img class="eagle1" src="https://i.ibb.co/bLjfkW2/eagle-fly.gif">
+    <img class="eagle2" src="https://i.ibb.co/bLjfkW2/eagle-fly.gif">
 
     <div class="container">
         <h1>Welcome to Phantom Web</h1>
-        <p>Neon Cyber Vibes • Double Eagle Animation</p>
+        <p>Double Eagle • Neon Cyber</p>
 
         <img class="main" src="https://i.ibb.co/BC0Rmnh/ghost-warrior.jpg">
 
-        <!-- Tombol Neon -->
         <br><br>
         <a class="neon-btn" onclick="playSound()">ENTER</a>
     </div>
