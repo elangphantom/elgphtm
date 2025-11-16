@@ -10,15 +10,17 @@
             font-family: Arial, sans-serif;
             color: #0ff;
             text-align: center;
+            overflow: hidden;
         }
 
         .container {
-            padding-top: 100px;
+            padding-top: 120px;
         }
 
         h1 {
-            font-size: 40px;
+            font-size: 45px;
             text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+            animation: glow 1.5s infinite alternate;
         }
 
         p {
@@ -26,31 +28,105 @@
             font-size: 18px;
         }
 
-        img {
-            width: 250px;
+        img.main {
+            width: 260px;
             margin-top: 20px;
             border-radius: 15px;
             box-shadow: 0 0 20px cyan;
         }
 
-        .glow {
-            animation: glow 1.5s infinite alternate;
-        }
-
         @keyframes glow {
             from { text-shadow: 0 0 5px cyan; }
-            to { text-shadow: 0 0 20px cyan; }
+            to   { text-shadow: 0 0 25px cyan; }
+        }
+
+        /* Elang 1 */
+        .eagle1 {
+            position: absolute;
+            top: 18%;
+            left: -300px;
+            width: 250px;
+            animation: fly1 7s linear infinite;
+            filter: drop-shadow(0 0 15px cyan);
+        }
+
+        @keyframes fly1 {
+            0%   { left: -300px; transform: scale(1); }
+            50%  { transform: scale(1.2); }
+            100% { left: 120%; transform: scale(1); }
+        }
+
+        /* Elang 2 */
+        .eagle2 {
+            position: absolute;
+            top: 55%;
+            left: -350px;
+            width: 220px;
+            animation: fly2 9s linear infinite;
+            filter: drop-shadow(0 0 15px cyan);
+        }
+
+        @keyframes fly2 {
+            0%   { left: -350px; transform: scale(1); }
+            50%  { transform: scale(1.1); }
+            100% { left: 120%; transform: scale(1); }
+        }
+
+        /* Tombol Neon */
+        .neon-btn {
+            margin-top: 30px;
+            padding: 12px 25px;
+            border: 2px solid cyan;
+            border-radius: 10px;
+            color: cyan;
+            font-size: 20px;
+            text-decoration: none;
+            display: inline-block;
+            text-shadow: 0 0 10px cyan;
+            box-shadow: 0 0 20px cyan;
+            transition: 0.3s;
+            animation: btnGlow 1.8s infinite alternate;
+            cursor: pointer;
+        }
+
+        @keyframes btnGlow {
+            from { box-shadow: 0 0 10px cyan; }
+            to   { box-shadow: 0 0 25px cyan, 0 0 40px cyan; }
+        }
+
+        .neon-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 35px cyan;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1 class="glow">Welcome to Phantom Web</h1>
-        <p>Website pertama gue, gak main-main!</p>
+    <!-- Suara tombol -->
+    <audio id="clickSound">
+        <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_7a83ba45cd.mp3?filename=ui-click-1-153455.mp3" type="audio/mpeg">
+    </audio>
 
-        <img src="https://i.ibb.co/BC0Rmnh/ghost-warrior.jpg" alt="Neon Image">
+    <!-- Elang Terbang -->
+    <img class="eagle1" src="https://i.ibb.co/4mGBm0k/eagle-flying.gif">
+    <img class="eagle2" src="https://i.ibb.co/4mGBm0k/eagle-flying.gif">
+
+    <div class="container">
+        <h1>Welcome to Phantom Web</h1>
+        <p>Neon Cyber Vibes • Double Eagle Animation</p>
+
+        <img class="main" src="https://i.ibb.co/BC0Rmnh/ghost-warrior.jpg">
+
+        <!-- Tombol Neon -->
+        <br><br>
+        <a class="neon-btn" onclick="playSound()">ENTER</a>
     </div>
+
+    <script>
+        function playSound() {
+            document.getElementById("clickSound").play();
+        }
+    </script>
 
 </body>
 </html>
