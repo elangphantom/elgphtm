@@ -87,5 +87,15 @@ function playSound() {
 }
 </script>
 
-</body>
-</html>
+<audio id="clickSound" preload="auto">
+   <source src="https://cdn.pixabay.com/download/audio/2021/09/26/audio_3a771ad45d.mp3?filename=eagle-sound-123983.mp3">
+</audio>
+
+<script>
+function playSound() {
+    var sound = document.getElementById("clickSound");
+    sound.muted = false;
+    sound.volume = 1.0;
+    sound.play();
+}
+</script>
