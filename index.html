@@ -1,133 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Phantom Neon Web</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            font-family: Arial, sans-serif;
-            color: #0ff;
-            text-align: center;
-            overflow: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phantom Web</title>
 
-        .container {
-            padding-top: 130px;
-        }
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: black;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: #0ff;
+    }
 
-        h1 {
-            font-size: 45px;
-            text-shadow: 0 0 10px cyan, 0 0 20px cyan;
-            animation: glow 1.5s infinite alternate;
-        }
+    .eagle1, .eagle2 {
+        position: fixed;
+        width: 150px;
+        top: 20px;
+        z-index: 1;
+    }
+    .eagle1 { left: 20px; }
+    .eagle2 { right: 20px; }
 
-        p {
-            color: #aaa;
-            font-size: 18px;
-        }
+    .container {
+        margin-top: 120px;
+        z-index: 2;
+        position: relative;
+    }
 
-        img.main {
-            width: 260px;
-            margin-top: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px cyan;
-        }
+    .main {
+        width: 250px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 5px cyan; }
-            to   { text-shadow: 0 0 25px cyan; }
-        }
+    .neon-btn {
+        display: inline-block;
+        padding: 12px 30px;
+        margin-top: 20px;
+        background: #00ffff;
+        color: black;
+        font-weight: bold;
+        border-radius: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 0 15px #00ffff;
+        transition: 0.2s;
+    }
 
-        /* ==== EAGLE FIX ==== */
-        .eagle1, .eagle2 {
-            position: absolute;
-            width: 180px;   /* lebih kecil biar muat HP */
-            filter: drop-shadow(0 0 15px cyan);
-        }
-
-        .eagle1 {
-            top: 20%;
-            left: -250px;
-            animation: fly1 8s linear infinite;
-        }
-
-        .eagle2 {
-            top: 65%;
-            left: -250px;
-            animation: fly2 10s linear infinite;
-        }
-
-        @keyframes fly1 {
-            0% { left: -250px; }
-            50% { transform: scale(1.1); }
-            100% { left: 120%; }
-        }
-
-        @keyframes fly2 {
-            0% { left: -250px; }
-            50% { transform: scale(1.15); }
-            100% { left: 120%; }
-        }
-
-        /* Tombol Neon */
-        .neon-btn {
-            margin-top: 30px;
-            padding: 12px 25px;
-            border: 2px solid cyan;
-            border-radius: 10px;
-            color: cyan;
-            font-size: 20px;
-            text-decoration: none;
-            display: inline-block;
-            text-shadow: 0 0 10px cyan;
-            box-shadow: 0 0 20px cyan;
-            transition: 0.3s;
-            animation: btnGlow 1.8s infinite alternate;
-            cursor: pointer;
-        }
-
-        @keyframes btnGlow {
-            from { box-shadow: 0 0 10px cyan; }
-            to   { box-shadow: 0 0 25px cyan, 0 0 40px cyan; }
-        }
-
-        .neon-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 35px cyan;
-        }
-    </style>
+    .neon-btn:hover {
+        box-shadow: 0 0 25px #00ffff;
+    }
+</style>
 </head>
+
 <body>
 
-    <!-- CLICK SOUND -->
-    <audio id="clickSound">
-        <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_7a83ba45cd.mp3?filename=ui-click-1-153455.mp3">
-    </audio>
+<!-- Suara elang -->
+<audio id="clickSound">
+   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3f8b0872c5.mp3?filename=hawk-80063.mp3">
+</audio>
 
-    <!-- ==== FIXED EAGLE GIFS ==== -->
-    <img class="eagle1" src="https://i.ibb.co/bLjfkW2/eagle-fly.gif">
-    <img class="eagle2" src="https://i.ibb.co/bLjfkW2/eagle-fly.gif">
+<!-- GIF elang kiri kanan -->
+<img class="eagle1" src="https://i.ibb.co/4V4KPCd/eagle-left.gif">
+<img class="eagle2" src="https://i.ibb.co/0hFW3Pm/eagle-right.gif">
 
-    <div class="container">
-        <h1>Welcome to Phantom Web</h1>
-        <p>Double Eagle • Neon Cyber</p>
+<div class="container">
+    <h1>Welcome to Phantom Web</h1>
+    <p>Double Eagle • Neon Cyber</p>
 
-        <img class="main" src="https://i.ibb.co/BC0Rmnh/ghost-warrior.jpg">
+    <!-- Gambar utama -->
+    <img class="main" src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
 
-        <br><br>
-        <a class="neon-btn" onclick="playSound()">ENTER</a>
-    </div>
+    <br><br>
 
-    <script>
-        function playSound() {
-            document.getElementById("clickSound").play();
-        }
-    </script>
+    <!-- Tombol -->
+    <a class="neon-btn" onclick="playSound()">ENTER</a>
+</div>
 
-<img class="main" src="">
-<img class="main" src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
+<script>
+function playSound() {
+    document.getElementById("clickSound").play();
+}
+</script>
 
-    </body>
+</body>
 </html>
