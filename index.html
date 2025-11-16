@@ -1,24 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neon Page</title>
-  <style>
-    body {
-      background: #000;
-      color: #0ff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 20%;
-    }
-    h1 {
-      font-size: 60px;
-      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
-    }
-  </style>
+    <title>Phantom Neon Web</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: Arial, sans-serif;
+            color: #0ff;
+            text-align: center;
+        }
+
+        .container {
+            padding-top: 100px;
+        }
+
+        h1 {
+            font-size: 40px;
+            text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+        }
+
+        p {
+            color: #aaa;
+            font-size: 18px;
+        }
+
+        img {
+            width: 250px;
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px cyan;
+        }
+
+        .glow {
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px cyan; }
+            to { text-shadow: 0 0 20px cyan; }
+        }
+    </style>
 </head>
 <body>
-  <h1>WELCOME TO MY NEON SITE</h1>
+
+    <div class="container">
+        <h1 class="glow">Welcome to Phantom Web</h1>
+        <p>Website pertama gue, gak main-main!</p>
+
+        <img src="https://i.ibb.co/BC0Rmnh/ghost-warrior.jpg" alt="Neon Image">
+    </div>
+
 </body>
 </html>
