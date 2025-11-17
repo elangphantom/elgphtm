@@ -1,112 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Elang Phantom – Dark Web Style</title>
+<meta charset="UTF-8">
+<title>ELANG PHANTOM</title>
 
-    <style>
-        /* ==== GLOBAL DARKWEB VIBES ==== */
-        body {
-            margin: 0;
-            font-family: "Courier New", monospace;
-            background: #000000;
-            color: #00ff41;
-            text-shadow: 0 0 8px #00ff41;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            height: 100vh;
-            overflow-x: hidden;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+    }
 
-        /* ==== HEADER BAR ==== */
-        .header {
-            width: 100%;
-            padding: 20px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: bold;
-            background: linear-gradient(90deg, #000, #111, #000);
-            border-bottom: 2px solid #00ff41;
-        }
+    header {
+        background: #080808;
+        padding: 20px;
+        text-align: center;
+        font-size: 32px;
+        letter-spacing: 3px;
+        color: #ff0000;
+        text-shadow: 0 0 20px red;
+        border-bottom: 1px solid red;
+    }
 
-        /* ==== FLYING EAGLE ==== */
-        .eagle {
-            width: 300px;
-            margin-top: 40px;
-            filter: drop-shadow(0 0 20px red);
-            animation: float 3s infinite ease-in-out;
-        }
+    .container {
+        padding: 20px;
+        text-align: center;
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
+    /* Elang di tengah */
+    .elang {
+        width: 260px;
+        filter: drop-shadow(0 0 20px red);
+        animation: float 3s ease-in-out infinite;
+    }
 
-        /* ==== BUTTONS ==== */
-        .btn {
-            margin-top: 40px;
-            padding: 12px 25px;
-            border: 1px solid #00ff41;
-            background: rgba(0, 0, 0, 0.4);
-            color: #00ff41;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: 0.2s;
-        }
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
 
-        .btn:hover {
-            background: #00ff41;
-            color: #000;
-            text-shadow: none;
-        }
+    /* Tombol */
+    .btn {
+        display: block;
+        width: 80%;
+        margin: 12px auto;
+        padding: 14px;
+        background: #111;
+        border: 1px solid red;
+        border-radius: 8px;
+        color: #ff4d4d;
+        font-size: 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: 0.2s;
+        cursor: pointer;
+    }
 
-        /* ==== TERMINAL BOX ==== */
-        .terminal {
-            margin-top: 40px;
-            width: 80%;
-            max-width: 700px;
-            background: #050505;
-            border: 2px solid #00ff41;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px #00ff41;
-        }
+    .btn:hover {
+        background: red;
+        color: white;
+        box-shadow: 0 0 20px red;
+    }
 
-        .line {
-            margin: 5px 0;
-        }
-    </style>
+    /* Panel popup */
+    .panel {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        background: #111;
+        border: 1px solid red;
+        border-radius: 10px;
+        box-shadow: 0 0 20px red;
+    }
+</style>
+
+<script>
+    function toggle(id){
+        let p = document.getElementById(id);
+        p.style.display = (p.style.display === "block") ? "none" : "block";
+    }
+</script>
+
 </head>
-
 <body>
-    <div class="header">ELANG PHANTOM // DARK SYSTEM v1.0</div>
 
-    <img class="eagle" src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg" alt="Elang Phantom">
+<header>ELANG PHANTOM</header>
 
-    <button class="btn" onclick="playSound()">PLAY ELANG SCREAM</button>
+<div class="container">
 
-    <div class="terminal">
-        <div class="line">[ACCESS] Connecting to Phantom Network...</div>
-        <div class="line">[STATUS] Success.</div>
-        <div class="line">[INFO] Elang Phantom aktif.</div>
-        <div class="line">[LOG] Mode: DARK-WEB INTERFACE</div>
+    <!-- FOTO ELANG -->
+    <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg"
+         class="elang" alt="Elang Phantom">
+
+    <!-- TOMBOL -->
+    <div class="btn" onclick="toggle('info')">📌 Informasi</div>
+    <div class="btn" onclick="toggle('animasi')">🕶️ Animasi Mafia</div>
+    <div class="btn" onclick="toggle('suara')">🔊 Suara Elang</div>
+    <div class="btn" onclick="toggle('credit')">💀 Creator</div>
+
+    <!-- PANEL 1 -->
+    <div id="info" class="panel">
+        Website dark-mode bertema Elang Phantom.  
+        Dibuat penuh efek glowing merah + animasi.
     </div>
 
-    <audio id="elangSound" preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2021/09/26/audio_3a771ad45d.mp3?filename=eagle-sound-123983.mp3" type="audio/mpeg">
-    </audio>
+    <!-- PANEL 2 -->
+    <div id="animasi" class="panel">
+        <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif"
+             style="width:220px; filter: drop-shadow(0 0 20px red);">
+    </div>
 
-    <script>
-        function playSound() {
-            const audio = document.getElementById("elangSound");
-            audio.currentTime = 0;
-            audio.volume = 1.0;
-            audio.play().catch(err => console.error("Audio error:", err));
-        }
-    </script>
+    <!-- PANEL 3 -->
+    <div id="suara" class="panel">
+        <audio controls>
+            <source src="https://www.soundjay.com/nature/sounds/eagle-1.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- PANEL 4 -->
+    <div id="credit" class="panel">
+        Dibuat oleh <b>Elang Phantom</b>.  
+        Gaya Dark Web 🔥
+    </div>
+
+</div>
+
 </body>
 </html>
