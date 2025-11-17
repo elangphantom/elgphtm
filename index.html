@@ -4,318 +4,173 @@
 <meta charset="UTF-8">
 <title>ELANG PHANTOM</title>
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(120deg, #000000, #111111, #000000);
-    background-size: 400% 400%;
-    color: #fff;
-    overflow-x: hidden;
-    animation: bgAnim 15s ease infinite;
-}
-@keyframes bgAnim { 0% {background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+/* GENERAL */
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(120deg,#000,#111,#000);background-size:400% 400%;color:#fff;overflow-x:hidden;animation:bgAnim 20s ease infinite;}
+@keyframes bgAnim{0%{background-position:0%50%;}50%{background-position:100%50%;}100%{background-position:0%50%;}}
 
-header {
-    background: #080808;
-    padding: 20px;
-    text-align: center;
-    font-size: 32px;
-    letter-spacing: 3px;
-    color: #ff0000;
-    text-shadow: 0 0 20px red;
-    border-bottom: 1px solid red;
-}
+/* HEADER */
+header{background:#080808;padding:20px;text-align:center;font-size:32px;letter-spacing:3px;color:#ff0000;text-shadow:0 0 20px red;border-bottom:1px solid red;}
 
 /* NAVBAR */
-.navbar {
-    display: flex;
-    justify-content: space-around;
-    background: #0d0d0d;
-    padding: 12px 0;
-    border-bottom: 1px solid red;
-    position: sticky;
-    top: 0;
-    z-index: 99;
-}
-.nav-btn {
-    color: #ff4d4d;
-    font-size: 18px;
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    transition: 0.2s;
-    border: 1px solid transparent;
-    cursor: pointer;
-}
-.nav-btn:hover {
-    border: 1px solid red;
-    box-shadow: 0 0 12px red;
-}
+.navbar{display:flex;justify-content:space-around;background:#0d0d0d;padding:12px 0;border-bottom:1px solid red;position:sticky;top:0;z-index:99;}
+.nav-btn{color:#ff4d4d;font-size:18px;text-decoration:none;padding:8px 14px;border-radius:6px;transition:0.2s;border:1px solid transparent;cursor:pointer;}
+.nav-btn:hover{border:1px solid red;box-shadow:0 0 12px red;}
 
-/* Container */
-.container { padding:20px; text-align:center; }
+/* CONTAINER */
+.container{padding:20px;text-align:center;}
 
 /* ELANG IMAGE */
-.elang {
-    width: 260px;
-    filter: drop-shadow(0 0 20px red);
-    animation: float 3s ease-in-out infinite;
-    transition: transform 0.3s, filter 0.3s;
-}
-.elang:hover { transform: scale(1.1); filter: drop-shadow(0 0 40px red); }
-@keyframes float { 0%{transform:translateY(0);} 50%{transform:translateY(-20px);} 100%{transform:translateY(0);} }
+.elang{width:260px;filter:drop-shadow(0 0 20px red);animation:float 3s ease-in-out infinite;transition: transform 0.3s, filter 0.3s;}
+.elang:hover{transform:scale(1.1);filter:drop-shadow(0 0 40px red);}
+@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-20px);}100%{transform:translateY(0);}}
 
-/* Tombol */
-.btn {
-    display: block;
-    width: 80%;
-    margin: 12px auto;
-    padding: 14px;
-    background: #111;
-    border: 1px solid red;
-    border-radius: 8px;
-    color: #ff4d4d;
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.btn:hover { background:red; color:white; box-shadow:0 0 20px red; }
+/* BUTTONS */
+.btn,.like-btn,.share-btn{display:block;width:80%;margin:12px auto;padding:14px;background:#111;border:1px solid red;border-radius:8px;color:#ff4d4d;font-size:20px;text-align:center;text-decoration:none;transition:0.3s;cursor:pointer;}
+.btn:hover,.like-btn:hover,.share-btn:hover{background:red;color:white;box-shadow:0 0 20px red;}
 
-/* Panel */
-.page { display:none; animation:fade 0.4s ease; }
-@keyframes fade { from{opacity:0;} to{opacity:1;} }
+/* PANEL */
+.page{display:none;animation:fade 0.4s ease;}
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
+.panel{margin-top:20px;padding:20px;background:#111;border:1px solid red;border-radius:10px;box-shadow:0 0 20px red;opacity:0;transform:translateY(20px);transition:0.5s;}
 
-.panel {
-    margin-top: 20px;
-    padding: 20px;
-    background: #111;
-    border:1px solid red;
-    border-radius:10px;
-    box-shadow:0 0 20px red;
-    opacity:0;
-    transform:translateY(20px);
-    transition:0.5s;
-}
+/* GALLERY GRID */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.grid img{width:100%;border:1px solid red;border-radius:10px;box-shadow:0 0 15px red;transition:transform 0.3s, box-shadow 0.3s;}
+.grid img:hover{transform:scale(1.05);box-shadow:0 0 25px red;}
 
-/* Galeri grid */
-.grid {
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-}
-.grid img {
-    width:100%;
-    border:1px solid red;
-    border-radius:10px;
-    box-shadow:0 0 15px red;
-    transition:transform 0.3s,box-shadow 0.3s;
-}
-.grid img:hover { transform:scale(1.05); box-shadow:0 0 25px red; }
+/* LOADING */
+#loading{position:fixed;width:100%;height:100%;background:black;top:0;left:0;display:flex;justify-content:center;align-items:center;z-index:999;}
+.spinner{width:50px;height:50px;border:5px solid red;border-top:5px solid transparent;border-radius:50%;animation:spin 1s linear infinite;}
+@keyframes spin{100%{transform:rotate(360deg);}}
 
-/* Loading */
-#loading {
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:black;
-    top:0;
-    left:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-}
-.spinner {
-    width:50px;
-    height:50px;
-    border:5px solid red;
-    border-top:5px solid transparent;
-    border-radius:50%;
-    animation:spin 1s linear infinite;
-}
-@keyframes spin { 100%{transform:rotate(360deg);} }
+/* NOTIF */
+#notif{position:fixed;bottom:20px;right:20px;background:#111;padding:15px;border:1px solid red;border-radius:8px;color:#ff4d4d;box-shadow:0 0 10px red;display:none;}
 
-/* Notif */
-#notif {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#111;
-    padding:15px;
-    border:1px solid red;
-    border-radius:8px;
-    color:#ff4d4d;
-    box-shadow:0 0 10px red;
-    display:none;
-}
+/* LIKE */
+.like-counter{margin-left:10px;font-size:18px;}
 
-/* Like Button */
-.like-btn {
-    background:#111;
-    border:1px solid red;
-    border-radius:8px;
-    padding:10px 20px;
-    color:#ff4d4d;
-    cursor:pointer;
-    margin:10px auto;
-    display:inline-block;
-    font-size:18px;
-    transition:0.3s;
-}
-.like-btn:hover { background:red; color:white; box-shadow:0 0 20px red; }
-.like-counter { margin-left:10px; font-size:18px; }
+/* BADGE */
+#badge{position:fixed;top:20px;right:20px;background:#111;color:#ff4d4d;padding:10px;border-radius:8px;border:1px solid red;cursor:pointer;user-select:none;box-shadow:0 0 10px red;}
 
-/* Badge */
-#badge {
-    position:fixed;
-    top:20px;
-    right:20px;
-    background:#111;
-    color:#ff4d4d;
-    padding:10px;
-    border-radius:8px;
-    border:1px solid red;
-    cursor:pointer;
-    user-select:none;
-    box-shadow:0 0 10px red;
-}
+/* CHAT */
+#chat-btn{position:fixed;bottom:80px;right:20px;background:red;color:white;padding:12px 16px;border:none;border-radius:8px;cursor:pointer;box-shadow:0 0 15px red;}
+#chat-popup{display:none;position:fixed;bottom:130px;right:20px;width:250px;background:#111;color:#ff4d4d;border:1px solid red;border-radius:10px;box-shadow:0 0 20px red;padding:10px;z-index:999;}
+#chat-popup h4{margin:0 0 10px 0;}
+#chat-popup .chat-msg{background:#222;padding:5px;margin:5px 0;border-radius:5px;}
+#chat-popup input{width:calc(100% - 20px);padding:5px;margin-top:5px;border-radius:5px;border:1px solid red;background:#111;color:#ff4d4d;}
 
-/* Chat Popup */
-#chat-btn {
-    position:fixed;
-    bottom:80px;
-    right:20px;
-    background:red;
-    color:white;
-    padding:12px 16px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    box-shadow:0 0 15px red;
-}
-#chat-popup {
+/* RANDOM FLOAT */
+@keyframes randomFloat{0%{transform:translate(0,0);}25%{transform:translate(10px,-5px);}50%{transform:translate(-10px,10px);}75%{transform:translate(5px,-10px);}100%{transform:translate(0,0);}}
+.randomAnim{animation:randomFloat 6s ease-in-out infinite;}
+
+/* QUOTES */
+#quote{margin-top:20px;font-size:18px;color:#ff4d4d;text-shadow:0 0 8px red;}
+
+/* LEVEL UP */
+#levelup{
     display:none;
     position:fixed;
-    bottom:130px;
-    right:20px;
-    width:250px;
+    top:40%;
+    left:50%;
+    transform:translate(-50%,-50%);
     background:#111;
     color:#ff4d4d;
-    border:1px solid red;
-    border-radius:10px;
-    box-shadow:0 0 20px red;
-    padding:10px;
+    padding:20px 30px;
+    border:2px solid red;
+    border-radius:12px;
+    font-size:20px;
+    box-shadow:0 0 25px red;
     z-index:999;
+    text-align:center;
+    animation:popupAnim 0.5s ease forwards;
 }
-#chat-popup h4 { margin:0 0 10px 0; }
-#chat-popup .chat-msg { background:#222; padding:5px; margin:5px 0; border-radius:5px; }
-#chat-popup input { width:calc(100% - 20px); padding:5px; margin-top:5px; border-radius:5px; border:1px solid red; background:#111; color:#ff4d4d; }
-
+@keyframes popupAnim{0%{opacity:0;transform:translate(-50%,-60%) scale(0.5);}100%{opacity:1;transform:translate(-50%,-50%) scale(1);}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
-function showPage(id){
-    let pages=document.getElementsByClassName("page");
-    for(let p of pages){ p.style.display="none"; }
-    document.getElementById(id).style.display="block";
-    window.scrollTo({top:0, behavior:'smooth'});
-}
-function toggle(id){
-    let p=document.getElementById(id);
-    p.style.display=(p.style.display==="block")?"none":"block";
-}
+// SHOW PAGE
+function showPage(id){let pages=document.getElementsByClassName("page");for(let p of pages){p.style.display="none";}document.getElementById(id).style.display="block";window.scrollTo({top:0,behavior:'smooth'});}
+function toggle(id){let p=document.getElementById(id);p.style.display=(p.style.display==="block")?"none":"block";}
 
-// Typing animasi
-let txt="WELCOME TO ELANG PHANTOM WEBSITE...";
+// TYPING
+let txt="WELCOME TO ELANG PHANTOM...";
 let i=0;
-function type(){ if(i<txt.length){ document.getElementById("typing").innerHTML+=txt.charAt(i); i++; setTimeout(type,80); } }
+function type(){if(i<txt.length){document.getElementById("typing").innerHTML+=txt.charAt(i);i++;setTimeout(type,80);}}
 
-// Quotes random
+// QUOTES
 let quotes=[
-    "Jangan takut gelap, takutlah tidak punya tujuan.",
-    "Diam bukan berarti lemah, tapi sedang mengamati.",
-    "Hidup keras, mental harus lebih keras.",
-    "Musuh terlihat, kawan kadang menyamar."
+"Diam bukan berarti kalah, tapi sedang menghitung langkah musuh.",
+"Hidup keras, atau mati tersingkir.",
+"Jangan takut gelap, takutlah tanpa arah.",
+"Musuh terlihat, tapi kawan bisa menyamar.",
+"Tangan yang lambat hanya menunggu kekalahan.",
+"Setiap langkah dihitung, setiap detik bernilai.",
+"Berlindung di balik bayangan bukan lemah, tapi strategi.",
+"Hidup ini predator, jangan jadi mangsa.",
+"Ketakutan hanyalah ilusi, aksi yang nyata.",
+"Mata yang tajam melihat yang tak terlihat."
 ];
-function randomQuote(){ document.getElementById("quote").innerHTML=quotes[Math.floor(Math.random()*quotes.length)]; }
+function randomQuote(){document.getElementById("quote").innerHTML=quotes[Math.floor(Math.random()*quotes.length)];}
 
-// Scroll animation
-window.addEventListener('scroll',function(){
-    let panels=document.getElementsByClassName('panel');
-    for(let p of panels){
-        let top=p.getBoundingClientRect().top;
-        if(top<window.innerHeight-50){ p.style.opacity=1; p.style.transform="translateY(0)"; }
-    }
-});
+// SCROLL PANEL
+window.addEventListener('scroll',function(){let panels=document.getElementsByClassName('panel');for(let p of panels){let top=p.getBoundingClientRect().top;if(top<window.innerHeight-50){p.style.opacity=1;p.style.transform="translateY(0)";}}});
 
-// Like button
+// LIKE
 let likes=0;
-function addLike(){
-    likes++;
-    document.getElementById("like-count").innerText=likes;
-    // Animasi kecil
-    let btn=document.getElementById("like-btn");
-    btn.style.transform="scale(1.2)";
-    setTimeout(()=>{ btn.style.transform="scale(1)"; },150);
-}
+function addLike(){likes++;document.getElementById("like-count").innerText=likes;let btn=document.getElementById("like-btn");btn.style.transform="scale(1.2)";setTimeout(()=>{btn.style.transform="scale(1)";},150);checkLevelUp();}
 
-// Badge click
+// BADGE
 let badgeCount=0;
-function badgeClick(){ badgeCount++; document.getElementById("badge").innerText="Badge: "+badgeCount; }
+function badgeClick(){badgeCount++;document.getElementById("badge").innerText="Badge: "+badgeCount;checkLevelUp();}
 
-// Chat popup
-function toggleChat(){
-    let chat=document.getElementById("chat-popup");
-    chat.style.display=(chat.style.display==="block")?"none":"block";
-}
-function sendChat(){
-    let input=document.getElementById("chat-input");
-    let msg=input.value;
-    if(msg.trim()!==""){
-        let chatBox=document.getElementById("chat-messages");
-        let div=document.createElement("div");
-        div.className="chat-msg";
-        div.innerText=msg;
-        chatBox.appendChild(div);
-        input.value="";
-        chatBox.scrollTop=chatBox.scrollHeight;
-    }
-}
+// CHAT
+function toggleChat(){let chat=document.getElementById("chat-popup");chat.style.display=(chat.style.display==="block")?"none":"block";}
+function sendChat(){let input=document.getElementById("chat-input");let msg=input.value;if(msg.trim()!==""){let chatBox=document.getElementById("chat-messages");let div=document.createElement("div");div.className="chat-msg";div.innerText=msg;chatBox.appendChild(div);input.value="";chatBox.scrollTop=chatBox.scrollHeight;}}
 
-// Loading + init
+// RANDOM ELEMENT
+function randomAnim(){let elems=document.getElementsByClassName("randomAnim");for(let e of elems){e.style.transform="translate("+(Math.random()*20-10)+"px,"+(Math.random()*20-10)+"px)";}}
+setInterval(randomAnim,3000);
+
+// SHARE BUTTON
+function copyText(text){navigator.clipboard.writeText(text);alert("Link copied: "+text);}
+
+// LEVEL UP
+function showLevelUp(msg){let l=document.getElementById("levelup");l.innerText=msg;l.style.display="block";setTimeout(()=>{l.style.display="none";},2000);}
+function checkLevelUp(){if(likes>0 && likes%5===0){showLevelUp("Level Up! 👍");}if(badgeCount>0 && badgeCount%3===0){showLevelUp("Achievement Unlocked! 🏆");}}
+
+// INIT
 window.onload=function(){
     document.getElementById("loading").style.display="none";
-    type(); randomQuote();
-    setTimeout(()=>{ document.getElementById("notif").style.display="block"; },1500);
+    type();
+    randomQuote();
+    setInterval(randomQuote,5000);
+    setTimeout(()=>{document.getElementById("notif").style.display="block";},1500);
 }
 
-// Partikel
-particlesJS("particles-js", { "particles": { "number": { "value": 60 }, "color": { "value": "#ff0000" }, "opacity": { "value": 0.7 }, "size": { "value":3 }, "move": { "speed":1.5 } } });
+// PARTICLES
+particlesJS("particles-js",{particles:{number:{value:60},color:{value:"#ff0000"},opacity:{value:0.7},size:{value:3},move:{speed:1.5}}});
 </script>
 </head>
 <body>
-
-<!-- Loading -->
+<!-- LOADING -->
 <div id="loading"><div class="spinner"></div></div>
 
-<!-- Partikel background -->
+<!-- PARTICLES -->
 <div id="particles-js"></div>
 
 <header>ELANG PHANTOM</header>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-btn" onclick="showPage('home')">🏠 Home</div>
     <div class="nav-btn" onclick="showPage('gallery')">🖼️ Gallery</div>
     <div class="nav-btn" onclick="showPage('about')">💀 About</div>
 </div>
 
-<!-- Badge -->
+<!-- BADGE -->
 <div id="badge" onclick="badgeClick()">Badge: 0</div>
 
-<!-- Chat Button -->
+<!-- CHAT BUTTON -->
 <button id="chat-btn" onclick="toggleChat()">Chat</button>
 
 <div id="chat-popup">
@@ -325,51 +180,54 @@ particlesJS("particles-js", { "particles": { "number": { "value": 60 }, "color":
 <button onclick="sendChat()">Kirim</button>
 </div>
 
-<!-- Home -->
+<!-- LEVEL UP -->
+<div id="levelup"></div>
+
+<!-- HOME -->
 <div id="home" class="page" style="display:block;">
-    <div class="container">
-        <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg"
-             class="elang" alt="Elang Phantom">
-        <h3 id="typing" style="color:red;"></h3>
-        <div id="quote" style="margin-top:20px; color:#ff4d4d; font-size:18px;"></div>
-        <div class="btn" onclick="toggle('info')">📌 Informasi</div>
-        <div id="info" class="panel" style="display:none;">
-            Ini Adalah Website, Drak. Harap hati-hati jangan pencet sembarangan.
-            Ikan Hiu Makan Tomat BodoAmat 🗿
-        </div>
-        <div>
-            <button id="like-btn" class="like-btn" onclick="addLike()">👍 Like</button>
-            <span class="like-counter" id="like-count">0</span>
-        </div>
-    </div>
+<div class="container">
+<img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg" class="elang randomAnim" alt="Elang Phantom">
+<h3 id="typing" style="color:red;"></h3>
+<div id="quote"></div>
+<div class="btn" onclick="toggle('info')">📌 Informasi</div>
+<div id="info" class="panel">
+Ini Adalah Website, Drak. Hati-hati jangan pencet sembarangan. Ikan Hiu Makan Tomat BodoAmat 🗿
+</div>
+<div>
+<button id="like-btn" class="like-btn" onclick="addLike()">👍 Like</button>
+<span class="like-counter" id="like-count">0</span>
+</div>
+<div>
+<button class="share-btn" onclick="copyText('https://elangphantom.website')">📤 Share Link</button>
+</div>
+</div>
 </div>
 
-<!-- Gallery -->
+<!-- GALLERY -->
 <div id="gallery" class="page">
-    <div class="container">
-        <h2 style="color:red; text-shadow:0 0 10px red;">GALERI EFEK</h2>
-        <div class="grid">
-            <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
-            <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
-            <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
-            <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
-        </div>
-    </div>
+<div class="container">
+<h2 style="color:red;text-shadow:0 0 10px red;">GALERI EFEK</h2>
+<div class="grid">
+<img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif" class="randomAnim">
+<img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg" class="randomAnim">
+<img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif" class="randomAnim">
+<img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg" class="randomAnim">
+</div>
+</div>
 </div>
 
-<!-- About -->
+<!-- ABOUT -->
 <div id="about" class="page">
-    <div class="container">
-        <div class="panel">
-            <h2 style="color:red; text-shadow:0 0 10px red;">CREATOR</h2>
-            Dibuat oleh <b>Elang Phantom</b>.<br>
-            Drak Web + efek drak.
-        </div>
-    </div>
+<div class="container">
+<div class="panel">
+<h2 style="color:red;text-shadow:0 0 10px red;">CREATOR</h2>
+Dibuat oleh <b>Elang Phantom</b>.<br>
+Drak Web + efek drak.
+</div>
+</div>
 </div>
 
-<!-- Notifikasi -->
+<!-- NOTIF -->
 <div id="notif">Selamat datang di ELANG PHANTOM 🔥</div>
-
 </body>
 </html>
