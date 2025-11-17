@@ -4,106 +4,42 @@
 <meta charset="UTF-8">
 <title>ELANG PHANTOM</title>
 <style>
-/* GENERAL */
 body {
   margin:0;
   font-family:Arial,sans-serif;
-  overflow-x:hidden;
+  overflow:hidden;
   background: linear-gradient(135deg,#0d0d0d,#1a0d1a,#0d1a1a);
-  color:#fff;
+  color:#ff4d4d;
   position:relative;
 }
-header {
-  background:#111;
-  padding:20px;
-  text-align:center;
-  font-size:32px;
-  letter-spacing:3px;
-  color:#ff0000;
-  text-shadow:0 0 20px red;
-  border-bottom:1px solid red;
-  z-index:10;
-  position:relative;
-}
-.navbar {
-  display:flex;
-  justify-content:space-around;
-  background:#1a0a1a;
-  padding:12px 0;
-  border-bottom:1px solid red;
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-.nav-btn {
-  color:#ff4d4d;
-  font-size:18px;
-  text-decoration:none;
-  padding:8px 14px;
-  border-radius:6px;
-  transition:0.2s;
-  border:1px solid transparent;
-  cursor:pointer;
-}
-.nav-btn:hover { border:1px solid red; box-shadow:0 0 12px red; }
-.container { padding:20px; text-align:center; position:relative; z-index:10; }
-.elang { width:260px; filter:drop-shadow(0 0 20px red); animation:float 3s ease-in-out infinite; transition:transform 0.3s,filter 0.3s; }
-.elang:hover { transform:scale(1.1); filter:drop-shadow(0 0 40px red); }
-@keyframes float { 0%{transform:translateY(0);}50%{transform:translateY(-20px);}100%{transform:translateY(0);} }
-.btn,.like-btn,.share-btn {
-  display:block;
-  width:80%;
-  margin:12px auto;
-  padding:14px;
-  background:#111;
-  border:1px solid red;
-  border-radius:8px;
-  color:#ff4d4d;
-  font-size:20px;
-  text-align:center;
-  text-decoration:none;
-  transition:0.3s;
-  cursor:pointer;
-}
-.btn:hover,.like-btn:hover,.share-btn:hover{ background:red; color:white; box-shadow:0 0 20px red; }
-.page{ display:none; animation:fade 0.4s ease; }
-@keyframes fade{ from{opacity:0;} to{opacity:1;} }
-.panel{ margin-top:20px; padding:20px; background:#111; border:1px solid red; border-radius:10px; box-shadow:0 0 20px red; opacity:0; transform:translateY(20px); transition:0.5s; }
-.grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
-.grid img{ width:100%; border:1px solid red; border-radius:10px; box-shadow:0 0 15px red; transition:transform 0.3s,box-shadow 0.3s; }
-.grid img:hover{ transform:scale(1.05); box-shadow:0 0 25px red; }
-#notif{ position:fixed; bottom:20px; right:20px; background:#111; padding:15px; border:1px solid red; border-radius:8px; color:#ff4d4d; box-shadow:0 0 10px red; display:none; z-index:20; }
-.like-counter{ margin-left:10px; font-size:18px; }
-#badge{ position:fixed; top:20px; right:20px; background:#111; color:#ff4d4d; padding:10px; border-radius:8px; border:1px solid red; cursor:pointer; user-select:none; box-shadow:0 0 10px red; z-index:20; }
-#chat-btn{ position:fixed; bottom:80px; right:20px; background:red; color:white; padding:12px 16px; border:none; border-radius:8px; cursor:pointer; box-shadow:0 0 15px red; z-index:20; }
-#chat-popup{ display:none; position:fixed; bottom:130px; right:20px; width:250px; background:#111; color:#ff4d4d; border:1px solid red; border-radius:10px; box-shadow:0 0 20px red; padding:10px; z-index:30; }
-#chat-popup h4{ margin:0 0 10px 0; }
-#chat-popup .chat-msg{ background:#222; padding:5px; margin:5px 0; border-radius:5px; }
-#chat-popup input{ width:calc(100% - 20px); padding:5px; margin-top:5px; border-radius:5px; border:1px solid red; background:#111; color:#ff4d4d; }
-#levelup{ display:none; position:fixed; top:40%; left:50%; transform:translate(-50%,-50%); background:#111; color:#ff4d4d; padding:20px 30px; border:2px solid red; border-radius:12px; font-size:20px; box-shadow:0 0 25px red; z-index:40; text-align:center; animation:popupAnim 0.5s ease forwards; }
-@keyframes popupAnim{0%{opacity:0;transform:translate(-50%,-60%) scale(0.5);}100%{opacity:1;transform:translate(-50%,-50%) scale(1);} }
-#quote{ margin-top:20px; font-size:18px; color:#ff4d4d; text-shadow:0 0 8px red; z-index:10; position:relative; }
-
-/* FIRE EFFECT */
+.container { position:relative; z-index:10; text-align:center; padding-top:100px; }
+.elang { width:200px; filter:drop-shadow(0 0 20px red); animation:float 3s ease-in-out infinite; }
+@keyframes float {0%{transform:translateY(0);}50%{transform:translateY(-20px);}100%{transform:translateY(0);}}
+#quote { font-size:22px; color:#ff4d4d; text-shadow:0 0 8px red; margin-top:40px; text-align:center; }
 .fire-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0; }
-.fire { position:absolute; bottom:0; width:10px; height:10px; background:orange; opacity:0.8; border-radius:50%; filter:blur(8px); animation:rise 2s linear forwards; }
-@keyframes rise { 0% { transform:translateY(0) scale(1); opacity:0.8; } 50%{ opacity:0.6; } 100%{ transform:translateY(-300px) scale(2); opacity:0; } }
-
-/* GIFT EFFECT */
+.fire {
+  position:absolute;
+  bottom:0;
+  width:10px;
+  height:10px;
+  background:orange;
+  border-radius:50%;
+  filter:blur(8px);
+  animation:riseTimbul 2s linear forwards;
+  opacity:0;
+  transform:scale(0.5);
+}
+@keyframes riseTimbul {
+  0% { opacity:0; transform:translateY(0) scale(0.5);}
+  20% { opacity:0.8; transform:translateY(-30px) scale(1);}
+  100% { transform:translateY(-300px) scale(2); opacity:0;}
+}
 .gift { position:fixed; font-size:24px; animation:fall 4s linear forwards; pointer-events:none; }
-@keyframes fall { 0%{ transform:translateY(-50px); opacity:1; } 100%{ transform:translateY(100vh); opacity:0; } }
+@keyframes fall {0%{ transform:translateY(-50px); opacity:1;}100%{ transform:translateY(100vh); opacity:0;}}
 </style>
 <script>
-// PAGE SHOW
-function showPage(id){let pages=document.getElementsByClassName("page");for(let p of pages){p.style.display="none";}document.getElementById(id).style.display="block";window.scrollTo({top:0,behavior:'smooth'});}
-function toggle(id){let p=document.getElementById(id);p.style.display=(p.style.display==="block")?"none":"block";}
-
-// TYPING
-let txt="WELCOME TO ELANG PHANTOM...";let i=0;
-function type(){if(i<txt.length){document.getElementById("typing").innerHTML+=txt.charAt(i);i++;setTimeout(type,30);}}
-
-// QUOTES
-let quotes=[
+// Quotes
+let quotes = [
 "Diam bukan berarti kalah, tapi sedang menghitung langkah musuh.",
 "Hidup keras, atau mati tersingkir.",
 "Jangan takut gelap, takutlah tanpa arah.",
@@ -126,19 +62,9 @@ let quotes=[
 "Yang lambat akan menjadi santapan bagi yang cepat."
 ];
 function randomQuote(){document.getElementById("quote").innerHTML=quotes[Math.floor(Math.random()*quotes.length)];}
+setInterval(randomQuote,2000);
 
-// LIKE & BADGE & LEVELUP
-let likes=0,badgeCount=0;
-function addLike(){likes++;document.getElementById("like-count").innerText=likes;checkLevelUp();}
-function badgeClick(){badgeCount++;document.getElementById("badge").innerText="Badge: "+badgeCount;checkLevelUp();}
-function checkLevelUp(){if(likes>0 && likes%5===0){showLevelUp("Level Up! 👍");}if(badgeCount>0 && badgeCount%3===0){showLevelUp("Achievement Unlocked! 🏆");}}
-function showLevelUp(msg){let l=document.getElementById("levelup");l.innerText=msg;l.style.display="block";setTimeout(()=>{l.style.display="none";},2000);}
-
-// CHAT
-function toggleChat(){let chat=document.getElementById("chat-popup");chat.style.display=(chat.style.display==="block")?"none":"block";}
-function sendChat(){let input=document.getElementById("chat-input");let msg=input.value;if(msg.trim()!==""){let chatBox=document.getElementById("chat-messages");let div=document.createElement("div");div.className="chat-msg";div.innerText=msg;chatBox.appendChild(div);input.value="";chatBox.scrollTop=chatBox.scrollHeight;}}
-
-// FIRE EFFECT
+// Fire timbul
 function spawnFire() {
   const fire = document.createElement("div");
   fire.className="fire";
@@ -149,9 +75,9 @@ function spawnFire() {
   document.querySelector(".fire-container").appendChild(fire);
   setTimeout(()=>{fire.remove()},2000);
 }
-setInterval(spawnFire,100);
+setInterval(spawnFire,120);
 
-// GIFT EFFECT
+// Gift
 function spawnGift(){
   const gifts = ["🎁","✨","🔥","💎","🛡️"];
   const gift = document.createElement("div");
@@ -162,83 +88,13 @@ function spawnGift(){
   setTimeout(()=>{gift.remove();},4000);
 }
 setInterval(spawnGift,1200);
-
-// INIT
-window.onload=function(){type();randomQuote();setInterval(randomQuote,2000);document.getElementById("notif").style.display="block";}
 </script>
 </head>
 <body>
-
-<!-- FIRE BACKGROUND -->
 <div class="fire-container"></div>
-
-<header>ELANG PHANTOM</header>
-
-<!-- NAVBAR -->
-<div class="navbar">
-<div class="nav-btn" onclick="showPage('home')">🏠 Home</div>
-<div class="nav-btn" onclick="showPage('gallery')">🖼️ Gallery</div>
-<div class="nav-btn" onclick="showPage('about')">💀 About</div>
-</div>
-
-<!-- BADGE -->
-<div id="badge" onclick="badgeClick()">Badge: 0</div>
-
-<!-- CHAT -->
-<button id="chat-btn" onclick="toggleChat()">Chat</button>
-<div id="chat-popup">
-<h4>Mini Chat</h4>
-<div id="chat-messages" style="max-height:150px;overflow-y:auto;"></div>
-<input type="text" id="chat-input" placeholder="Tulis pesan...">
-<button onclick="sendChat()">Kirim</button>
-</div>
-
-<!-- LEVEL UP -->
-<div id="levelup"></div>
-
-<!-- HOME -->
-<div id="home" class="page" style="display:block;">
 <div class="container">
 <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg" class="elang" alt="Elang Phantom">
-<h3 id="typing" style="color:red;"></h3>
-<div id="quote"></div>
-<div class="btn" onclick="toggle('info')">📌 Informasi</div>
-<div id="info" class="panel">Ini Adalah Website, Drak. Hati-hati jangan pencet sembarangan. Ikan Hiu Makan Tomat BodoAmat 🗿</div>
-<div>
-<button id="like-btn" class="like-btn" onclick="addLike()">👍 Like</button>
-<span class="like-counter" id="like-count">0</span>
+<div id="quote">SELAMAT DATANG DI ELANG PHANTOM</div>
 </div>
-<div>
-<button class="share-btn" onclick="alert('Link copied: https://elangphantom.website')">📤 Share Link</button>
-</div>
-</div>
-</div>
-
-<!-- GALLERY -->
-<div id="gallery" class="page">
-<div class="container">
-<h2 style="color:red;text-shadow:0 0 10px red;">GALERI EFEK</h2>
-<div class="grid">
-<img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
-<img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
-<img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
-<img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
-</div>
-</div>
-</div>
-
-<!-- ABOUT -->
-<div id="about" class="page">
-<div class="container">
-<div class="panel">
-<h2 style="color:red;text-shadow:0 0 10px red;">CREATOR</h2>
-Dibuat oleh <b>Elang Phantom</b>.<br>Drak Web + efek drak.
-</div>
-</div>
-</div>
-
-<!-- NOTIF -->
-<div id="notif">Selamat datang di ELANG PHANTOM 🔥</div>
-
 </body>
 </html>
