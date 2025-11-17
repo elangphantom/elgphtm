@@ -5,96 +5,304 @@
 <title>ELANG PHANTOM</title>
 <style>
 body {
-  margin:0;
-  font-family:Arial,sans-serif;
-  overflow:hidden;
-  background: linear-gradient(135deg,#0d0d0d,#1a0d1a,#0d1a1a);
-  color:#ff4d4d;
-  position:relative;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #000000, #111111, #000000);
+    background-size: 400% 400%;
+    color: #fff;
+    overflow-x: hidden;
+    animation: bgAnim 15s ease infinite;
 }
-.container { position:relative; z-index:10; text-align:center; padding-top:100px; }
-.elang { width:200px; filter:drop-shadow(0 0 20px red); animation:float 3s ease-in-out infinite; }
-@keyframes float {0%{transform:translateY(0);}50%{transform:translateY(-20px);}100%{transform:translateY(0);}}
-#quote { font-size:22px; color:#ff4d4d; text-shadow:0 0 8px red; margin-top:40px; text-align:center; }
-.fire-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:0; }
-.fire {
-  position:absolute;
-  bottom:0;
-  width:10px;
-  height:10px;
-  background:orange;
-  border-radius:50%;
-  filter:blur(8px);
-  animation:riseTimbul 2s linear forwards;
-  opacity:0;
-  transform:scale(0.5);
+
+@keyframes bgAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
-@keyframes riseTimbul {
-  0% { opacity:0; transform:translateY(0) scale(0.5);}
-  20% { opacity:0.8; transform:translateY(-30px) scale(1);}
-  100% { transform:translateY(-300px) scale(2); opacity:0;}
+
+header {
+    background: #080808;
+    padding: 20px;
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 3px;
+    color: #ff0000;
+    text-shadow: 0 0 20px red;
+    border-bottom: 1px solid red;
 }
-.gift { position:fixed; font-size:24px; animation:fall 4s linear forwards; pointer-events:none; }
-@keyframes fall {0%{ transform:translateY(-50px); opacity:1;}100%{ transform:translateY(100vh); opacity:0;}}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    background: #0d0d0d;
+    padding: 12px 0;
+    border-bottom: 1px solid red;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+.nav-btn {
+    color: #ff4d4d;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: 0.2s;
+    border: 1px solid transparent;
+}
+.nav-btn:hover {
+    border: 1px solid red;
+    box-shadow: 0 0 12px red;
+}
+
+/* Container */
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+/* ELANG IMAGE */
+.elang {
+    width: 260px;
+    filter: drop-shadow(0 0 20px red);
+    animation: float 3s ease-in-out infinite;
+    transition: transform 0.3s, filter 0.3s;
+}
+.elang:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 40px red);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Tombol */
+.btn {
+    display: block;
+    width: 80%;
+    margin: 12px auto;
+    padding: 14px;
+    background: #111;
+    border: 1px solid red;
+    border-radius: 8px;
+    color: #ff4d4d;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.btn:hover {
+    background: red;
+    color: white;
+    box-shadow: 0 0 20px red;
+}
+
+/* Panel */
+.page {
+    display: none;
+    animation: fade 0.4s ease;
+}
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+.panel {
+    margin-top: 20px;
+    padding: 20px;
+    background: #111;
+    border: 1px solid red;
+    border-radius: 10px;
+    box-shadow: 0 0 20px red;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.5s;
+}
+
+/* Galeri grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+.grid img {
+    width: 100%;
+    border: 1px solid red;
+    border-radius: 10px;
+    box-shadow: 0 0 15px red;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px red;
+}
+
+/* Loading */
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid red;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* Notif */
+#notif {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #111;
+    padding: 15px;
+    border: 1px solid red;
+    border-radius: 8px;
+    color: #ff4d4d;
+    box-shadow: 0 0 10px red;
+    display: none;
+}
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
-// Quotes
+function showPage(id){
+    let pages = document.getElementsByClassName("page");
+    for(let p of pages){ p.style.display = "none"; }
+    document.getElementById(id).style.display = "block";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggle(id){
+    let p = document.getElementById(id);
+    p.style.display = (p.style.display === "block") ? "none" : "block";
+}
+
+// Typing animasi
+let txt = "WELCOME TO ELANG PHANTOM WEBSITE...";
+let i = 0;
+function type(){
+    if(i < txt.length){
+        document.getElementById("typing").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(type, 80);
+    }
+}
+
+// Quotes random
 let quotes = [
-"Diam bukan berarti kalah, tapi sedang menghitung langkah musuh.",
-"Hidup keras, atau mati tersingkir.",
-"Jangan takut gelap, takutlah tanpa arah.",
-"Musuh terlihat, tapi kawan bisa menyamar.",
-"Tangan yang lambat hanya menunggu kekalahan.",
-"Setiap langkah dihitung, setiap detik bernilai.",
-"Berlindung di balik bayangan bukan lemah, tapi strategi.",
-"Hidup ini predator, jangan jadi mangsa.",
-"Ketakutan hanyalah ilusi, aksi yang nyata.",
-"Mata yang tajam melihat yang tak terlihat.",
-"Langkah tanpa strategi adalah bunuh diri.",
-"Keheningan adalah senjata bagi yang cerdas.",
-"Musuh yang lengah adalah hadiah terbaik.",
-"Hanya yang berani menatap kegelapan yang menang.",
-"Tidak ada ampun bagi yang terlambat.",
-"Hidup bukan soal bertahan, tapi menyerang.",
-"Bayangan bisa menjadi sekutu, atau musuh.",
-"Kemenangan lahir dari kesabaran yang mematikan.",
-"Setiap detik bisa mengubah nasib, jangan sia-siakan.",
-"Yang lambat akan menjadi santapan bagi yang cepat."
+    "Jangan takut gelap, takutlah tidak punya tujuan.",
+    "Diam bukan berarti lemah, tapi sedang mengamati.",
+    "Hidup keras, mental harus lebih keras.",
+    "Musuh terlihat, kawan kadang menyamar."
 ];
-function randomQuote(){document.getElementById("quote").innerHTML=quotes[Math.floor(Math.random()*quotes.length)];}
-setInterval(randomQuote,2000);
-
-// Fire timbul
-function spawnFire() {
-  const fire = document.createElement("div");
-  fire.className="fire";
-  fire.style.left=Math.random()*100+"vw";
-  fire.style.width=5+Math.random()*10+"px";
-  fire.style.height=5+Math.random()*10+"px";
-  fire.style.background=`rgba(${200+Math.random()*55},${50+Math.random()*100},0,0.8)`;
-  document.querySelector(".fire-container").appendChild(fire);
-  setTimeout(()=>{fire.remove()},2000);
+function randomQuote(){
+    document.getElementById("quote").innerHTML =
+        quotes[Math.floor(Math.random()*quotes.length)];
 }
-setInterval(spawnFire,120);
 
-// Gift
-function spawnGift(){
-  const gifts = ["🎁","✨","🔥","💎","🛡️"];
-  const gift = document.createElement("div");
-  gift.className = "gift";
-  gift.innerText = gifts[Math.floor(Math.random()*gifts.length)];
-  gift.style.left = Math.random()*90+"vw";
-  document.body.appendChild(gift);
-  setTimeout(()=>{gift.remove();},4000);
+// Scroll animations untuk panel
+window.addEventListener('scroll', function(){
+    let panels = document.getElementsByClassName('panel');
+    for(let p of panels){
+        let top = p.getBoundingClientRect().top;
+        if(top < window.innerHeight - 50){
+            p.style.opacity = 1;
+            p.style.transform = "translateY(0)";
+        }
+    }
+});
+
+// Loading + inisialisasi
+window.onload = function(){
+    document.getElementById("loading").style.display = "none";
+    type();
+    randomQuote();
+    setTimeout(()=>{ document.getElementById("notif").style.display = "block"; }, 1500);
 }
-setInterval(spawnGift,1200);
+
+// Partikel background
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 60 },
+    "color": { "value": "#ff0000" },
+    "opacity": { "value": 0.7 },
+    "size": { "value": 3 },
+    "move": { "speed": 1.5 }
+  }
+});
 </script>
 </head>
+
 <body>
-<div class="fire-container"></div>
-<div class="container">
-<img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg" class="elang" alt="Elang Phantom">
-<div id="quote">SELAMAT DATANG DI ELANG PHANTOM</div>
+<!-- Loading -->
+<div id="loading"><div class="spinner"></div></div>
+
+<!-- Partikel background -->
+<div id="particles-js"></div>
+
+<header>ELANG PHANTOM</header>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <a class="nav-btn" onclick="showPage('home')">🏠 Home</a>
+    <a class="nav-btn" onclick="showPage('gallery')">🖼️ Gallery</a>
+    <a class="nav-btn" onclick="showPage('about')">💀 About</a>
 </div>
+
+<!-- HOME -->
+<div id="home" class="page" style="display:block;">
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg"
+             class="elang" alt="Elang Phantom">
+        <h3 id="typing" style="color:red;"></h3>
+        <div id="quote" style="margin-top:20px; color:#ff4d4d; font-size:18px;"></div>
+        <div class="btn" onclick="toggle('info')">📌 Informasi</div>
+        <div id="info" class="panel" style="display:none;">
+            Ini Adalah Website, Drak. Harap hati-hati jangan pencet sembarangan.
+            Ikan Hiu Makan Tomat BodoAmat 🗿
+        </div>
+    </div>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery" class="page">
+    <div class="container">
+        <h2 style="color:red; text-shadow:0 0 10px red;">GALERI EFEK</h2>
+        <div class="grid">
+            <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
+            <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
+            <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
+            <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="page">
+    <div class="container">
+        <div class="panel">
+            <h2 style="color:red; text-shadow:0 0 10px red;">CREATOR</h2>
+            Dibuat oleh <b>Elang Phantom</b>.<br>
+            Drak Web + efek drak.
+        </div>
+    </div>
+</div>
+
+<!-- Notifikasi -->
+<div id="notif">Selamat datang di ELANG PHANTOM 🔥</div>
 </body>
 </html>
