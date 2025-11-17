@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ELANG PHANTOM</title>
-
-<style>
+<title>ELANG PHANTOM</title><style>
     body {
         margin: 0;
         font-family: Arial, sans-serif;
@@ -24,12 +21,38 @@
         border-bottom: 1px solid red;
     }
 
+    /* NAVBAR */
+    .navbar {
+        display: flex;
+        justify-content: space-around;
+        background: #0d0d0d;
+        padding: 12px 0;
+        border-bottom: 1px solid red;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+    }
+
+    .nav-btn {
+        color: #ff4d4d;
+        font-size: 18px;
+        text-decoration: none;
+        padding: 8px 14px;
+        border-radius: 6px;
+        transition: 0.2s;
+        border: 1px solid transparent;
+    }
+
+    .nav-btn:hover {
+        border: 1px solid red;
+        box-shadow: 0 0 12px red;
+    }
+
     .container {
         padding: 20px;
         text-align: center;
     }
 
-    /* Elang di tengah */
     .elang {
         width: 260px;
         filter: drop-shadow(0 0 20px red);
@@ -65,9 +88,18 @@
         box-shadow: 0 0 20px red;
     }
 
-    /* Panel popup */
-    .panel {
+    /* Panel */
+    .page {
         display: none;
+        animation: fade 0.4s ease;
+    }
+
+    @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .panel {
         margin-top: 20px;
         padding: 20px;
         background: #111;
@@ -75,58 +107,52 @@
         border-radius: 10px;
         box-shadow: 0 0 20px red;
     }
-</style>
+</style><script>
+    function showPage(id){
+        let pages = document.getElementsByClassName("page");
+        for(let p of pages){ p.style.display = "none"; }
+        document.getElementById(id).style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-<script>
     function toggle(id){
         let p = document.getElementById(id);
         p.style.display = (p.style.display === "block") ? "none" : "block";
     }
-</script>
-
-</head>
-<body>
-
-<header>ELANG PHANTOM</header>
-
-<div class="container">
-
-    <!-- FOTO ELANG -->
-    <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg"
-         class="elang" alt="Elang Phantom">
-
-    <!-- TOMBOL -->
-    <div class="btn" onclick="toggle('info')">📌 Informasi</div>
-    <div class="btn" onclick="toggle('animasi')">🕶️ Animasi Mafia</div>
-    <div class="btn" onclick="toggle('suara')">🔊 Suara Elang</div>
-    <div class="btn" onclick="toggle('credit')">💀 Creator</div>
-
-    <!-- PANEL 1 -->
-    <div id="info" class="panel">
-        Website dark-mode bertema Elang Phantom.  
-        Dibuat penuh efek glowing merah + animasi.
+</script></head>
+<body><header>ELANG PHANTOM</header><!-- NAVBAR ala Facebook --><div class="navbar">
+    <a class="nav-btn" onclick="showPage('home')">🏠 Home</a>
+    <a class="nav-btn" onclick="showPage('gallery')">🖼️ Gallery</a>
+    <a class="nav-btn" onclick="showPage('sound')">🔊 Sound</a>
+    <a class="nav-btn" onclick="showPage('about')">💀 About</a>
+</div><!-- PAGE: HOME --><div id="home" class="page" style="display:block;">
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg"
+             class="elang" alt="Elang Phantom"><div class="btn" onclick="toggle('info')">📌 Informasi</div>
+    <div id="info" class="panel" style="display:none;">
+        Website dark-mode bertema Elang Phantom.
     </div>
+</div>
 
-    <!-- PANEL 2 -->
-    <div id="animasi" class="panel">
-        <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif"
-             style="width:220px; filter: drop-shadow(0 0 20px red);">
+</div><!-- PAGE: GALLERY --><div id="gallery" class="page">
+    <div class="container">
+        <h2 style="color:red; text-shadow:0 0 10px red;">GALERI EFEK</h2>
+        <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif" style="width:220px; filter: drop-shadow(0 0 20px red);">
     </div>
-
-    <!-- PANEL 3 -->
-    <div id="suara" class="panel">
+</div><!-- PAGE: SOUND --><div id="sound" class="page">
+    <div class="container">
+        <h2 style="color:red; text-shadow:0 0 10px red;">SUARA ELANG</h2>
         <audio controls>
             <source src="https://www.soundjay.com/nature/sounds/eagle-1.mp3" type="audio/mp3">
         </audio>
     </div>
-
-    <!-- PANEL 4 -->
-    <div id="credit" class="panel">
-        Dibuat oleh <b>Elang Phantom</b>.  
-        Gaya Dark Web 🔥
+</div><!-- PAGE: ABOUT --><div id="about" class="page">
+    <div class="container">
+        <div class="panel">
+            <h2 style="color:red; text-shadow:0 0 10px red;">CREATOR</h2>
+            Dibuat oleh <b>Elang Phantom</b>.<br>
+            Gaya Dark Web + efek glowing.
+        </div>
     </div>
-
-</div>
-
-</body>
+</div></body>
 </html>
