@@ -3,62 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <title>Elang Phantom</title>
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Orbitron:wght@700&display=swap');
+
         body {
-            background: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            margin: 0;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+
+            /* 🔥 Background Gradient Merah Menyala */
+            background: radial-gradient(circle at center,
+                #ff0000,
+                #660000 40%,
+                #000000 80%
+            );
         }
 
+        /* 🔥 Efek Api di belakang */
+        .fire-bg {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('https://i.ibb.co/9b8f0mX/fire.gif');
+            background-size: cover;
+            opacity: 0.12;
+            mix-blend-mode: screen;
+            animation: slowmove 20s linear infinite;
+        }
+
+        @keyframes slowmove {
+            from { transform: translate(-10%, -10%); }
+            to   { transform: translate(0%, 0%); }
+        }
+
+        /* 🦅 Elang */
+        .eagle {
+            width: 350px;
+            animation: fly 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 25px red);
+            z-index: 3;
+        }
+
+        @keyframes fly {
+            0%   { transform: translateY(0); }
+            50%  { transform: translateY(-25px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* 🔥 Judul Glitch */
+        .title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 55px;
+            color: red;
+            text-shadow: 0 0 15px red;
+            animation: glitch 1s infinite;
+            z-index: 3;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px red; }
+            50% { text-shadow: -2px -2px #ff3333; }
+            100% { text-shadow: 2px -2px red; }
+        }
+
+        /* 🔥 Tombol ENTER */
         .neon-btn {
-            padding: 20px 60px;
-            font-size: 30px;
+            margin-top: 30px;
+            padding: 18px 60px;
+            font-size: 28px;
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 2px;
             color: white;
-            border: 3px solid cyan;
-            border-radius: 15px;
-            text-decoration: none;
-            display: inline-block;
-            animation: glow 1.5s infinite alternate;
+            border: 3px solid red;
+            border-radius: 10px;
+            background: transparent;
             cursor: pointer;
+            z-index: 3;
+
+            animation: glow 1.2s infinite alternate;
         }
 
         @keyframes glow {
-            from {
-                box-shadow: 0 0 10px cyan, 0 0 20px cyan;
-            }
-            to {
-                box-shadow: 0 0 20px cyan, 0 0 40px cyan;
-            }
+            from { box-shadow: 0 0 10px red, 0 0 20px red; }
+            to   { box-shadow: 0 0 20px darkred, 0 0 40px red; }
+        }
+
+        /* Hover */
+        .neon-btn:hover {
+            background: rgba(255,0,0,0.2);
+            transform: scale(1.1);
         }
     </style>
 </head>
 
 <body>
 
-    <!-- TOMBOL -->
-    <button class="neon-btn" onclick="playSound()">ENTER</button>
+    <div class="fire-bg"></div>
 
-    <!-- SUARA -->
+    <div class="title">ELANG PHANTOM</div>
+
+    <!-- 🦅 GAMBAR ELANG -->
+    <img class="eagle" src="https://i.ibb.co/0s48Lhq/eagle.png" alt="Elang Phantom">
+
+    <!-- 🔊 SUARA -->
     <audio id="clickSound" preload="auto">
         <source src="https://cdn.pixabay.com/download/audio/2021/09/26/audio_3a771ad45d.mp3?filename=eagle-sound-123983.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- 🔥 TOMBOL -->
+    <button class="neon-btn" onclick="playSound()">ENTER</button>
+
     <script>
         function playSound() {
             const sound = document.getElementById("clickSound");
-
-            sound.muted = false;     // pastikan tidak mute
-            sound.volume = 1;        // volume maksimal
-            sound.currentTime = 0;   // mulai dari awal
+            sound.muted = false;
+            sound.volume = 1;
+            sound.currentTime = 0;
 
             sound.play().catch(err => {
-                console.log("Suara diblokir browser:", err);
+                console.log("Suara diblokir:", err);
             });
         }
     </script>
