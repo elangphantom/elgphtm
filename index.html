@@ -1,83 +1,104 @@
 <!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elang Phantom</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: #fff;
-            text-align: center;
-        }header {
-        padding: 40px 20px;
-        background: linear-gradient(90deg, #ff0000, #5a0000);
-        box-shadow: 0 0 20px red;
-    }
-
-    h1 {
-        font-size: 3rem;
+    <title>Elang Phantom – Dark Web Style</title><style>
+    /* ==== GLOBAL DARKWEB VIBES ==== */
+    body {
         margin: 0;
-        text-shadow: 0 0 15px red;
+        font-family: "Courier New", monospace;
+        background: #000000;
+        color: #00ff41;
+        text-shadow: 0 0 8px #00ff41;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+        overflow-x: hidden;
     }
 
-    .logo {
-        width: 200px;
-        margin-top: 20px;
-        filter: drop-shadow(0 0 10px red);
-    }
-
-    .container {
-        padding: 30px 20px;
-    }
-
-    .btn {
-        display: inline-block;
-        padding: 12px 25px;
-        margin: 10px;
-        background: red;
-        border-radius: 8px;
-        color: #fff;
-        text-decoration: none;
+    /* ==== HEADER BAR ==== */
+    .header {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        font-size: 28px;
         font-weight: bold;
-        box-shadow: 0 0 15px red;
+        background: linear-gradient(90deg, #000, #111, #000);
+        border-bottom: 2px solid #00ff41;
+    }
+
+    /* ==== FLYING EAGLE ==== */
+    .eagle {
+        width: 300px;
+        margin-top: 40px;
+        filter: drop-shadow(0 0 20px red);
+        animation: float 3s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0); }
+    }
+
+    /* ==== BUTTONS ==== */
+    .btn {
+        margin-top: 40px;
+        padding: 12px 25px;
+        border: 1px solid #00ff41;
+        background: rgba(0, 0, 0, 0.4);
+        color: #00ff41;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 5px;
         transition: 0.2s;
     }
 
     .btn:hover {
-        background: #ff3333;
-        box-shadow: 0 0 25px #ff3333;
+        background: #00ff41;
+        color: #000;
+        text-shadow: none;
     }
 
-    footer {
+    /* ==== TERMINAL BOX ==== */
+    .terminal {
         margin-top: 40px;
+        width: 80%;
+        max-width: 700px;
+        background: #050505;
+        border: 2px solid #00ff41;
         padding: 20px;
-        background: #111;
-        color: #777;
-        font-size: 0.9rem;
+        border-radius: 8px;
+        box-shadow: 0 0 15px #00ff41;
+    }
+
+    .line {
+        margin: 5px 0;
     }
 </style>
 
-</head>
-<body>
-    <header>
-        <h1>Elang Phantom</h1>
-        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Eagle_icon.svg" alt="Elang Phantom" />
-    </header><div class="container">
-    <h2 style="color:red; text-shadow:0 0 10px red;">Website Resmi Elang Phantom</h2>
-    <p>Selamat datang di sarang Elang Phantom. Hitam. Merah. Menyala.</p>
+</head><body>
+    <div class="header">ELANG PHANTOM // DARK SYSTEM v1.0</div><img class="eagle" src="https://i.ibb.co/0s48Lhq/eagle.png" alt="Elang Phantom" />
 
-    <a class="btn" href="#">Gallery</a>
-    <a class="btn" href="#">About</a>
-    <a class="btn" href="#">Join Clan</a>
-    <a class="btn" href="#">Contact</a>
+<button class="btn" onclick="playSound()">PLAY ELANG SCREAM</button>
+
+<div class="terminal">
+    <div class="line">[ACCESS] Connecting to Phantom Network...</div>
+    <div class="line">[STATUS] Success.</div>
+    <div class="line">[INFO] Elang Phantom aktif.</div>
+    <div class="line">[LOG] Mode: DARK-WEB INTERFACE</div>
 </div>
 
-<footer>
-    © 2025 Elang Phantom. All rights reserved.
-</footer>
+<audio id="elangSound" src="elang.mp3"></audio>
+
+<script>
+    function playSound() {
+        const audio = document.getElementById('elangSound');
+        audio.volume = 1.0;
+        audio.play();
+    }
+</script>
 
 </body>
 </html>
