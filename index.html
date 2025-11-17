@@ -7,19 +7,10 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(120deg, #000000, #111111, #000000);
-    background-size: 400% 400%;
+    background: #000;
     color: #fff;
     overflow-x: hidden;
-    animation: bgAnim 15s ease infinite;
 }
-
-@keyframes bgAnim {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 header {
     background: #080808;
     padding: 20px;
@@ -42,6 +33,7 @@ header {
     top: 0;
     z-index: 99;
 }
+
 .nav-btn {
     color: #ff4d4d;
     font-size: 18px;
@@ -51,27 +43,21 @@ header {
     transition: 0.2s;
     border: 1px solid transparent;
 }
+
 .nav-btn:hover {
     border: 1px solid red;
     box-shadow: 0 0 12px red;
 }
 
-/* Container */
 .container {
     padding: 20px;
     text-align: center;
 }
 
-/* ELANG IMAGE */
 .elang {
     width: 260px;
     filter: drop-shadow(0 0 20px red);
     animation: float 3s ease-in-out infinite;
-    transition: transform 0.3s, filter 0.3s;
-}
-.elang:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 40px red);
 }
 
 @keyframes float {
@@ -93,9 +79,10 @@ header {
     font-size: 20px;
     text-align: center;
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.2s;
     cursor: pointer;
 }
+
 .btn:hover {
     background: red;
     color: white;
@@ -107,7 +94,11 @@ header {
     display: none;
     animation: fade 0.4s ease;
 }
-@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
 .panel {
     margin-top: 20px;
@@ -116,9 +107,6 @@ header {
     border: 1px solid red;
     border-radius: 10px;
     box-shadow: 0 0 20px red;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.5s;
 }
 
 /* Galeri grid */
@@ -132,11 +120,6 @@ header {
     border: 1px solid red;
     border-radius: 10px;
     box-shadow: 0 0 15px red;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.grid img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px red;
 }
 
 /* Loading */
@@ -201,6 +184,11 @@ function type(){
         setTimeout(type, 80);
     }
 }
+window.onload = function(){
+    document.getElementById("loading").style.display = "none";
+    type();
+    setTimeout(()=>{ document.getElementById("notif").style.display = "block"; }, 1500);
+}
 
 // Quotes random
 let quotes = [
@@ -213,28 +201,16 @@ function randomQuote(){
     document.getElementById("quote").innerHTML =
         quotes[Math.floor(Math.random()*quotes.length)];
 }
+</script>
+</head>
 
-// Scroll animations untuk panel
-window.addEventListener('scroll', function(){
-    let panels = document.getElementsByClassName('panel');
-    for(let p of panels){
-        let top = p.getBoundingClientRect().top;
-        if(top < window.innerHeight - 50){
-            p.style.opacity = 1;
-            p.style.transform = "translateY(0)";
-        }
-    }
-});
+<body>
+<!-- Loading -->
+<div id="loading"><div class="spinner"></div></div>
 
-// Loading + inisialisasi
-window.onload = function(){
-    document.getElementById("loading").style.display = "none";
-    type();
-    randomQuote();
-    setTimeout(()=>{ document.getElementById("notif").style.display = "block"; }, 1500);
-}
-
-// Partikel background
+<!-- Partikel background -->
+<div id="particles-js"></div>
+<script>
 particlesJS("particles-js", {
   "particles": {
     "number": { "value": 60 },
@@ -245,25 +221,18 @@ particlesJS("particles-js", {
   }
 });
 </script>
-</head>
-
-<body>
-<!-- Loading -->
-<div id="loading"><div class="spinner"></div></div>
-
-<!-- Partikel background -->
-<div id="particles-js"></div>
 
 <header>ELANG PHANTOM</header>
 
-<!-- NAVBAR -->
+<!-- NAVBAR ala Facebook -->
 <div class="navbar">
     <a class="nav-btn" onclick="showPage('home')">🏠 Home</a>
     <a class="nav-btn" onclick="showPage('gallery')">🖼️ Gallery</a>
+    <a class="nav-btn" onclick="showPage('sound')">🔊 Sound</a>
     <a class="nav-btn" onclick="showPage('about')">💀 About</a>
 </div>
 
-<!-- HOME -->
+<!-- PAGE: HOME -->
 <div id="home" class="page" style="display:block;">
     <div class="container">
         <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg"
@@ -278,7 +247,7 @@ particlesJS("particles-js", {
     </div>
 </div>
 
-<!-- GALLERY -->
+<!-- PAGE: GALLERY -->
 <div id="gallery" class="page">
     <div class="container">
         <h2 style="color:red; text-shadow:0 0 10px red;">GALERI EFEK</h2>
@@ -291,7 +260,17 @@ particlesJS("particles-js", {
     </div>
 </div>
 
-<!-- ABOUT -->
+<!-- PAGE: SOUND -->
+<div id="sound" class="page">
+    <div class="container">
+        <h2 style="color:red; text-shadow:0 0 10px red;">SUARA ELANG</h2>
+        <audio controls>
+            <source src="https://www.soundjay.com/nature/sounds/eagle-1.mp3" type="audio/mp3">
+        </audio>
+    </div>
+</div>
+
+<!-- PAGE: ABOUT -->
 <div id="about" class="page">
     <div class="container">
         <div class="panel">
@@ -304,5 +283,9 @@ particlesJS("particles-js", {
 
 <!-- Notifikasi -->
 <div id="notif">Selamat datang di ELANG PHANTOM 🔥</div>
+
+<script>
+randomQuote();
+</script>
 </body>
 </html>
