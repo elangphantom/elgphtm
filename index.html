@@ -1,104 +1,112 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Elang Phantom – Dark Web Style</title><style>
-    /* ==== GLOBAL DARKWEB VIBES ==== */
-    body {
-        margin: 0;
-        font-family: "Courier New", monospace;
-        background: #000000;
-        color: #00ff41;
-        text-shadow: 0 0 8px #00ff41;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        height: 100vh;
-        overflow-x: hidden;
-    }
+    <title>Elang Phantom – Dark Web Style</title>
 
-    /* ==== HEADER BAR ==== */
-    .header {
-        width: 100%;
-        padding: 20px;
-        text-align: center;
-        font-size: 28px;
-        font-weight: bold;
-        background: linear-gradient(90deg, #000, #111, #000);
-        border-bottom: 2px solid #00ff41;
-    }
+    <style>
+        /* ==== GLOBAL DARKWEB VIBES ==== */
+        body {
+            margin: 0;
+            font-family: "Courier New", monospace;
+            background: #000000;
+            color: #00ff41;
+            text-shadow: 0 0 8px #00ff41;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            overflow-x: hidden;
+        }
 
-    /* ==== FLYING EAGLE ==== */
-    .eagle {
-        width: 300px;
-        margin-top: 40px;
-        filter: drop-shadow(0 0 20px red);
-        animation: float 3s infinite ease-in-out;
-    }
+        /* ==== HEADER BAR ==== */
+        .header {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #000, #111, #000);
+            border-bottom: 2px solid #00ff41;
+        }
 
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-        100% { transform: translateY(0); }
-    }
+        /* ==== FLYING EAGLE ==== */
+        .eagle {
+            width: 300px;
+            margin-top: 40px;
+            filter: drop-shadow(0 0 20px red);
+            animation: float 3s infinite ease-in-out;
+        }
 
-    /* ==== BUTTONS ==== */
-    .btn {
-        margin-top: 40px;
-        padding: 12px 25px;
-        border: 1px solid #00ff41;
-        background: rgba(0, 0, 0, 0.4);
-        color: #00ff41;
-        cursor: pointer;
-        font-size: 18px;
-        border-radius: 5px;
-        transition: 0.2s;
-    }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
 
-    .btn:hover {
-        background: #00ff41;
-        color: #000;
-        text-shadow: none;
-    }
+        /* ==== BUTTONS ==== */
+        .btn {
+            margin-top: 40px;
+            padding: 12px 25px;
+            border: 1px solid #00ff41;
+            background: rgba(0, 0, 0, 0.4);
+            color: #00ff41;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
 
-    /* ==== TERMINAL BOX ==== */
-    .terminal {
-        margin-top: 40px;
-        width: 80%;
-        max-width: 700px;
-        background: #050505;
-        border: 2px solid #00ff41;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 15px #00ff41;
-    }
+        .btn:hover {
+            background: #00ff41;
+            color: #000;
+            text-shadow: none;
+        }
 
-    .line {
-        margin: 5px 0;
-    }
-</style>
+        /* ==== TERMINAL BOX ==== */
+        .terminal {
+            margin-top: 40px;
+            width: 80%;
+            max-width: 700px;
+            background: #050505;
+            border: 2px solid #00ff41;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px #00ff41;
+        }
 
-</head><body>
-    <div class="header">ELANG PHANTOM // DARK SYSTEM v1.0</div><img class="eagle" src="https://i.ibb.co/0s48Lhq/eagle.png" alt="Elang Phantom" />
+        .line {
+            margin: 5px 0;
+        }
+    </style>
+</head>
 
-<button class="btn" onclick="playSound()">PLAY ELANG SCREAM</button>
+<body>
+    <div class="header">ELANG PHANTOM // DARK SYSTEM v1.0</div>
 
-<div class="terminal">
-    <div class="line">[ACCESS] Connecting to Phantom Network...</div>
-    <div class="line">[STATUS] Success.</div>
-    <div class="line">[INFO] Elang Phantom aktif.</div>
-    <div class="line">[LOG] Mode: DARK-WEB INTERFACE</div>
-</div>
+    <img class="eagle" src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg" alt="Elang Phantom">
 
-<audio id="elangSound" src="elang.mp3"></audio>
+    <button class="btn" onclick="playSound()">PLAY ELANG SCREAM</button>
 
-<script>
-    function playSound() {
-        const audio = document.getElementById('elangSound');
-        audio.volume = 1.0;
-        audio.play();
-    }
-</script>
+    <div class="terminal">
+        <div class="line">[ACCESS] Connecting to Phantom Network...</div>
+        <div class="line">[STATUS] Success.</div>
+        <div class="line">[INFO] Elang Phantom aktif.</div>
+        <div class="line">[LOG] Mode: DARK-WEB INTERFACE</div>
+    </div>
 
+    <audio id="elangSound" preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2021/09/26/audio_3a771ad45d.mp3?filename=eagle-sound-123983.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function playSound() {
+            const audio = document.getElementById("elangSound");
+            audio.currentTime = 0;
+            audio.volume = 1.0;
+            audio.play().catch(err => console.error("Audio error:", err));
+        }
+    </script>
 </body>
 </html>
