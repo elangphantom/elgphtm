@@ -1,105 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phantom Web</title>
-
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background: black;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        color: #0ff;
-    }
-
-    .eagle1, .eagle2 {
-        position: fixed;
-        width: 150px;
-        top: 20px;
-        z-index: 1;
-    }
-    .eagle1 { left: 20px; }
-    .eagle2 { right: 20px; }
-
-    .container {
-        margin-top: 120px;
-        z-index: 2;
-        position: relative;
-    }
-
-    .main {
-        width: 250px;
-        border-radius: 10px;
-        margin-top: 20px;
-    }
-
-    .neon-btn {
-        display: inline-block;
-        padding: 12px 30px;
-        margin-top: 20px;
-        background: #00ffff;
-        color: black;
-        font-weight: bold;
-        border-radius: 10px;
-        cursor: pointer;
-        text-decoration: none;
-        box-shadow: 0 0 15px #00ffff;
-        transition: 0.2s;
-    }
-
-    .neon-btn:hover {
-        box-shadow: 0 0 25px #00ffff;
-    }
-</style>
-</head>
-
-<body>
-
-<!-- Suara elang -->
-<audio id="clickSound">
-   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3f8b0872c5.mp3?filename=hawk-80063.mp3">
-</audio>
-
-<!-- GIF elang kiri kanan -->
-<img class="eagle1" src="https://i.ibb.co/4V4KPCd/eagle-left.gif">
-<img class="eagle2" src="https://i.ibb.co/0hFW3Pm/eagle-right.gif">
-
-<div class="container">
-    <h1>Welcome to Phantom Web</h1>
-    <p>Double Eagle • Neon Cyber</p>
-
-    <!-- Gambar utama -->
-    <img class="main" src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
-
-    <br><br>
-
-    <!-- Tombol -->
-    <a class="neon-btn" onclick="playSound()">ENTER</a>
-</div>
-
-<script>
-function playSound() {
-    document.getElementById("clickSound").play();
-}
-</script>
-
 <audio id="clickSound" preload="auto">
    <source src="https://cdn.pixabay.com/download/audio/2021/09/26/audio_3a771ad45d.mp3?filename=eagle-sound-123983.mp3">
 </audio>
 
 <script>
 function playSound() {
-    var sound = document.getElementById("clickSound");
+    const sound = document.getElementById("clickSound");
+    sound.currentTime = 0;      // restart suara tiap klik
     sound.muted = false;
     sound.volume = 1.0;
-    sound.play();
+    sound.play().catch(err => {
+        console.log("Browser block:", err);
+    });
 }
 </script>
-
-    <audio id="clickSound" preload="auto">
-   <source src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/suaraelang.mp3">
-</audio>
