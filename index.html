@@ -1,156 +1,291 @@
-<!DOCTYPE html><html lang="en">  <head>  
-<meta charset="UTF-8">  
-<title>ELANG PHANTOM</title><style>  
-    body {  
-        margin: 0;  
-        font-family: Arial, sans-serif;  
-        background: #000;  
-        color: #fff;  
-        overflow-x: hidden;  
-    }  header {  
-    background: #080808;  
-    padding: 20px;  
-    text-align: center;  
-    font-size: 32px;  
-    letter-spacing: 3px;  
-    color: #ff0000;  
-    text-shadow: 0 0 20px red;  
-    border-bottom: 1px solid red;  
-}  
-
-/* NAVBAR */  
-.navbar {  
-    display: flex;  
-    justify-content: space-around;  
-    background: #0d0d0d;  
-    padding: 12px 0;  
-    border-bottom: 1px solid red;  
-    position: sticky;  
-    top: 0;  
-    z-index: 99;  
-}  
-
-.nav-btn {  
-    color: #ff4d4d;  
-    font-size: 18px;  
-    text-decoration: none;  
-    padding: 8px 14px;  
-    border-radius: 6px;  
-    transition: 0.2s;  
-    border: 1px solid transparent;  
-}  
-
-.nav-btn:hover {  
-    border: 1px solid red;  
-    box-shadow: 0 0 12px red;  
-}  
-
-.container {  
-    padding: 20px;  
-    text-align: center;  
-}  
-
-.elang {  
-    width: 260px;  
-    filter: drop-shadow(0 0 20px red);  
-    animation: float 3s ease-in-out infinite;  
-}  
-
-@keyframes float {  
-    0% { transform: translateY(0px); }  
-    50% { transform: translateY(-20px); }  
-    100% { transform: translateY(0px); }  
-}  
-
-/* Tombol */  
-.btn {  
-    display: block;  
-    width: 80%;  
-    margin: 12px auto;  
-    padding: 14px;  
-    background: #111;  
-    border: 1px solid red;  
-    border-radius: 8px;  
-    color: #ff4d4d;  
-    font-size: 20px;  
-    text-align: center;  
-    text-decoration: none;  
-    transition: 0.2s;  
-    cursor: pointer;  
-}  
-
-.btn:hover {  
-    background: red;  
-    color: white;  
-    box-shadow: 0 0 20px red;  
-}  
-
-/* Panel */  
-.page {  
-    display: none;  
-    animation: fade 0.4s ease;  
-}  
-
-@keyframes fade {  
-    from { opacity: 0; }  
-    to { opacity: 1; }  
-}  
-
-.panel {  
-    margin-top: 20px;  
-    padding: 20px;  
-    background: #111;  
-    border: 1px solid red;  
-    border-radius: 10px;  
-    box-shadow: 0 0 20px red;  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ELANG PHANTOM</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+header {
+    background: #080808;
+    padding: 20px;
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 3px;
+    color: #ff0000;
+    text-shadow: 0 0 20px red;
+    border-bottom: 1px solid red;
 }
 
-</style><script>
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    background: #0d0d0d;
+    padding: 12px 0;
+    border-bottom: 1px solid red;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.nav-btn {
+    color: #ff4d4d;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: 0.2s;
+    border: 1px solid transparent;
+}
+
+.nav-btn:hover {
+    border: 1px solid red;
+    box-shadow: 0 0 12px red;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.elang {
+    width: 260px;
+    filter: drop-shadow(0 0 20px red);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Tombol */
+.btn {
+    display: block;
+    width: 80%;
+    margin: 12px auto;
+    padding: 14px;
+    background: #111;
+    border: 1px solid red;
+    border-radius: 8px;
+    color: #ff4d4d;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: red;
+    color: white;
+    box-shadow: 0 0 20px red;
+}
+
+/* Panel */
+.page {
+    display: none;
+    animation: fade 0.4s ease;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.panel {
+    margin-top: 20px;
+    padding: 20px;
+    background: #111;
+    border: 1px solid red;
+    border-radius: 10px;
+    box-shadow: 0 0 20px red;
+}
+
+/* Galeri grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+.grid img {
+    width: 100%;
+    border: 1px solid red;
+    border-radius: 10px;
+    box-shadow: 0 0 15px red;
+}
+
+/* Loading */
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid red;
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* Notif */
+#notif {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #111;
+    padding: 15px;
+    border: 1px solid red;
+    border-radius: 8px;
+    color: #ff4d4d;
+    box-shadow: 0 0 10px red;
+    display: none;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
 function showPage(id){
-let pages = document.getElementsByClassName("page");
-for(let p of pages){ p.style.display = "none"; }
-document.getElementById(id).style.display = "block";
-window.scrollTo({ top: 0, behavior: 'smooth' });
+    let pages = document.getElementsByClassName("page");
+    for(let p of pages){ p.style.display = "none"; }
+    document.getElementById(id).style.display = "block";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function toggle(id){  
-    let p = document.getElementById(id);  
-    p.style.display = (p.style.display === "block") ? "none" : "block";  
+function toggle(id){
+    let p = document.getElementById(id);
+    p.style.display = (p.style.display === "block") ? "none" : "block";
 }
 
-</script></head>
+// Typing animasi
+let txt = "WELCOME TO ELANG PHANTOM WEBSITE...";
+let i = 0;
+function type(){
+    if(i < txt.length){
+        document.getElementById("typing").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(type, 80);
+    }
+}
+window.onload = function(){
+    document.getElementById("loading").style.display = "none";
+    type();
+    setTimeout(()=>{ document.getElementById("notif").style.display = "block"; }, 1500);
+}
 
-<body><header>ELANG PHANTOM</header><!-- NAVBAR ala Facebook --><div class="navbar">  
-    <a class="nav-btn" onclick="showPage('home')">🏠 Home</a>  
-    <a class="nav-btn" onclick="showPage('gallery')">🖼️ Gallery</a>  
-    <a class="nav-btn" onclick="showPage('sound')">🔊 Sound</a>  
-    <a class="nav-btn" onclick="showPage('about')">💀 About</a>  
-</div><!-- PAGE: HOME --><div id="home" class="page" style="display:block;">  
-    <div class="container">  
-        <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg"  
-             class="elang" alt="Elang Phantom"><div class="btn" onclick="toggle('info')">📌 Informasi</div>  
-    <div id="info" class="panel" style="display:none;">  
-        Ini Adalah Website,Drak Harap Hati-Hati Jangan Pencet Sembarangan  
-        Ikan Hiu Makan Tomat BodoAmat🗿  
-    </div>  
-</div>  </div><!-- PAGE: GALLERY --><div id="gallery" class="page">  
-    <div class="container">  
-        <h2 style="color:red; text-shadow:0 0 10px red;">GALERI EFEK</h2>  
-        <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif" style="width:220px; filter: drop-shadow(0 0 20px red);">  
-    </div>  
-</div><!-- PAGE: SOUND --><div id="sound" class="page">  
-    <div class="container">  
-        <h2 style="color:red; text-shadow:0 0 10px red;">SUARA ELANG</h2>  
-        <audio controls>  
-            <source src="https://www.soundjay.com/nature/sounds/eagle-1.mp3" type="audio/mp3">  
-        </audio>  
-    </div>  
-</div><!-- PAGE: ABOUT --><div id="about" class="page">  
-    <div class="container">  
-        <div class="panel">  
-            <h2 style="color:red; text-shadow:0 0 10px red;">CREATOR</h2>  
-            Dibuat oleh <b>Elang Phantom</b>.<br>  
-            drak Web + efek drak.  
-        </div>  
-    </div>  
-</div></body>  
+// Quotes random
+let quotes = [
+    "Jangan takut gelap, takutlah tidak punya tujuan.",
+    "Diam bukan berarti lemah, tapi sedang mengamati.",
+    "Hidup keras, mental harus lebih keras.",
+    "Musuh terlihat, kawan kadang menyamar."
+];
+function randomQuote(){
+    document.getElementById("quote").innerHTML =
+        quotes[Math.floor(Math.random()*quotes.length)];
+}
+</script>
+</head>
+
+<body>
+<!-- Loading -->
+<div id="loading"><div class="spinner"></div></div>
+
+<!-- Partikel background -->
+<div id="particles-js"></div>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 60 },
+    "color": { "value": "#ff0000" },
+    "opacity": { "value": 0.7 },
+    "size": { "value": 3 },
+    "move": { "speed": 1.5 }
+  }
+});
+</script>
+
+<header>ELANG PHANTOM</header>
+
+<!-- NAVBAR ala Facebook -->
+<div class="navbar">
+    <a class="nav-btn" onclick="showPage('home')">🏠 Home</a>
+    <a class="nav-btn" onclick="showPage('gallery')">🖼️ Gallery</a>
+    <a class="nav-btn" onclick="showPage('sound')">🔊 Sound</a>
+    <a class="nav-btn" onclick="showPage('about')">💀 About</a>
+</div>
+
+<!-- PAGE: HOME -->
+<div id="home" class="page" style="display:block;">
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg"
+             class="elang" alt="Elang Phantom">
+        <h3 id="typing" style="color:red;"></h3>
+        <div id="quote" style="margin-top:20px; color:#ff4d4d; font-size:18px;"></div>
+        <div class="btn" onclick="toggle('info')">📌 Informasi</div>
+        <div id="info" class="panel" style="display:none;">
+            Ini Adalah Website, Drak. Harap hati-hati jangan pencet sembarangan.
+            Ikan Hiu Makan Tomat BodoAmat 🗿
+        </div>
+    </div>
+</div>
+
+<!-- PAGE: GALLERY -->
+<div id="gallery" class="page">
+    <div class="container">
+        <h2 style="color:red; text-shadow:0 0 10px red;">GALERI EFEK</h2>
+        <div class="grid">
+            <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
+            <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
+            <img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
+            <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
+        </div>
+    </div>
+</div>
+
+<!-- PAGE: SOUND -->
+<div id="sound" class="page">
+    <div class="container">
+        <h2 style="color:red; text-shadow:0 0 10px red;">SUARA ELANG</h2>
+        <audio controls>
+            <source src="https://www.soundjay.com/nature/sounds/eagle-1.mp3" type="audio/mp3">
+        </audio>
+    </div>
+</div>
+
+<!-- PAGE: ABOUT -->
+<div id="about" class="page">
+    <div class="container">
+        <div class="panel">
+            <h2 style="color:red; text-shadow:0 0 10px red;">CREATOR</h2>
+            Dibuat oleh <b>Elang Phantom</b>.<br>
+            Drak Web + efek drak.
+        </div>
+    </div>
+</div>
+
+<!-- Notifikasi -->
+<div id="notif">Selamat datang di ELANG PHANTOM 🔥</div>
+
+<script>
+randomQuote();
+</script>
+</body>
+</html>
