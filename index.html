@@ -1,15 +1,67 @@
-<audio id="clickSound" preload="auto">
-   <source src="https://cdn.pixabay.com/download/audio/2021/09/26/audio_3a771ad45d.mp3?filename=eagle-sound-123983.mp3">
-</audio>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elang Phantom</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-<script>
-function playSound() {
-    const sound = document.getElementById("clickSound");
-    sound.currentTime = 0;      // restart suara tiap klik
-    sound.muted = false;
-    sound.volume = 1.0;
-    sound.play().catch(err => {
-        console.log("Browser block:", err);
-    });
-}
-</script>
+        .neon-btn {
+            padding: 20px 60px;
+            font-size: 30px;
+            color: white;
+            border: 3px solid cyan;
+            border-radius: 15px;
+            text-decoration: none;
+            display: inline-block;
+            animation: glow 1.5s infinite alternate;
+            cursor: pointer;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px cyan, 0 0 20px cyan;
+            }
+            to {
+                box-shadow: 0 0 20px cyan, 0 0 40px cyan;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOMBOL -->
+    <button class="neon-btn" onclick="playSound()">ENTER</button>
+
+    <!-- SUARA -->
+    <audio id="clickSound" preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2021/09/26/audio_3a771ad45d.mp3?filename=eagle-sound-123983.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function playSound() {
+            const sound = document.getElementById("clickSound");
+
+            sound.muted = false;     // pastikan tidak mute
+            sound.volume = 1;        // volume maksimal
+            sound.currentTime = 0;   // mulai dari awal
+
+            sound.play().catch(err => {
+                console.log("Suara diblokir browser:", err);
+            });
+        }
+    </script>
+
+</body>
+</html>
