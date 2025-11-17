@@ -41,10 +41,30 @@ function toggle(id){let p=document.getElementById(id);p.style.display=(p.style.d
 
 // TYPING
 let txt="WELCOME TO ELANG PHANTOM...";let i=0;
-function type(){if(i<txt.length){document.getElementById("typing").innerHTML+=txt.charAt(i);i++;setTimeout(type,80);}}
+function type(){if(i<txt.length){document.getElementById("typing").innerHTML+=txt.charAt(i);i++;setTimeout(type,30);}}
 
-// QUOTES
-let quotes=["Diam bukan berarti kalah, tapi sedang menghitung langkah musuh.","Hidup keras, atau mati tersingkir.","Jangan takut gelap, takutlah tanpa arah.","Musuh terlihat, tapi kawan bisa menyamar.","Tangan yang lambat hanya menunggu kekalahan.","Setiap langkah dihitung, setiap detik bernilai.","Berlindung di balik bayangan bukan lemah, tapi strategi.","Hidup ini predator, jangan jadi mangsa.","Ketakutan hanyalah ilusi, aksi yang nyata.","Mata yang tajam melihat yang tak terlihat."];
+// QUOTESlet quotes=[
+"Diam bukan berarti kalah, tapi sedang menghitung langkah musuh.",
+"Hidup keras, atau mati tersingkir.",
+"Jangan takut gelap, takutlah tanpa arah.",
+"Musuh terlihat, tapi kawan bisa menyamar.",
+"Tangan yang lambat hanya menunggu kekalahan.",
+"Setiap langkah dihitung, setiap detik bernilai.",
+"Berlindung di balik bayangan bukan lemah, tapi strategi.",
+"Hidup ini predator, jangan jadi mangsa.",
+"Ketakutan hanyalah ilusi, aksi yang nyata.",
+"Mata yang tajam melihat yang tak terlihat.",
+"Langkah tanpa strategi adalah bunuh diri.",
+"Keheningan adalah senjata bagi yang cerdas.",
+"Musuh yang lengah adalah hadiah terbaik.",
+"Hanya yang berani menatap kegelapan yang menang.",
+"Tidak ada ampun bagi yang terlambat.",
+"Hidup bukan soal bertahan, tapi menyerang.",
+"Bayangan bisa menjadi sekutu, atau musuh.",
+"Kemenangan lahir dari kesabaran yang mematikan.",
+"Setiap detik bisa mengubah nasib, jangan sia-siakan.",
+"Yang lambat akan menjadi santapan bagi yang cepat."
+];
 function randomQuote(){document.getElementById("quote").innerHTML=quotes[Math.floor(Math.random()*quotes.length)];}
 
 // LIKE & BADGE & LEVELUP
@@ -59,7 +79,7 @@ function toggleChat(){let chat=document.getElementById("chat-popup");chat.style.
 function sendChat(){let input=document.getElementById("chat-input");let msg=input.value;if(msg.trim()!==""){let chatBox=document.getElementById("chat-messages");let div=document.createElement("div");div.className="chat-msg";div.innerText=msg;chatBox.appendChild(div);input.value="";chatBox.scrollTop=chatBox.scrollHeight;}}
 
 // INIT
-window.onload=function(){type();randomQuote();setInterval(randomQuote,5000);document.getElementById("notif").style.display="block";}
+window.onload=function(){type();randomQuote();setInterval(randomQuote,2000);document.getElementById("notif").style.display="block";}
 </script>
 </head>
 <body>
@@ -111,9 +131,7 @@ window.onload=function(){type();randomQuote();setInterval(randomQuote,5000);docu
 <div class="container">
 <h2 style="color:red;text-shadow:0 0 10px red;">GALERI EFEK</h2>
 <div class="grid">
-<img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
 <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
-<img src="https://i.ibb.co/7vYr3QB/siluet-mafia-walk.gif">
 <img src="https://raw.githubusercontent.com/elangphantom/elgphtm/main/6031af25-04e6-4fe9-ba9d-295a27027ccf.jpeg">
 </div>
 </div>
@@ -124,7 +142,7 @@ window.onload=function(){type();randomQuote();setInterval(randomQuote,5000);docu
 <div class="container">
 <div class="panel">
 <h2 style="color:red;text-shadow:0 0 10px red;">CREATOR</h2>
-Dibuat oleh <b>Elang Phantom</b>.<br>Drak Web + efek drak.
+Dibuat oleh <b>Elang Phantom</b>.<br>Drak Web Gaje Anjir.
 </div>
 </div>
 </div>
